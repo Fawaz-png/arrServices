@@ -1,0 +1,74 @@
+*, 
+*::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-boxs;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.nav-bar{
+    background-color: #1A3A5A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    padding: 0 10px;
+    position: sticky;
+    top: 0;
+}
+
+.nav-bar a{
+    text-decoration: none;
+    color: #FFD700;
+    font-size: 24px;
+}
+
+.nav-link a{
+    color: #cccccc;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.hero-img{
+    height: 100vh;
+    background-image: url(images/portrait-male-security-guard-with-uniform.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.hero-img button{
+    border-radius: 5px;
+    border: none;
+    background-color: gold;
+    padding: 15px 50px;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    top: 65%;
+    left: 10%;
+}
+
+.hero-img .name{
+    font-size: 28px;
+    color: #FFD700;
+    
+}
+
+.hero-text{
+    position: absolute;
+    left: 10%;
+    top: 40%;
+    letter-spacing: 0.1em;
+}
+
+.tag-line{
+    font-size: 56px;
+    color: #cccccc;
+    width: 60%;
+    font-weight: 100;
+    
+}
