@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arr Services</title>
 </head>
 <link rel="stylesheet" href="styles.css">
+
 <body>
-    
+
     <header>
 
         <div class="nav-bar">
-            <a href="">Company Logo</a>
-            <div class="nav-link">
-            <a href="">Home</a>
-            <a href="">Services</a>
-            <a href="">About Us</a>
-            <a href="">Contact</a>
+            <a href="#" class="logo">Company Logo</a>
+            <div class="toggle" onclick="toggleOpacity()">
+                <a href="">=</a>
+                <div class="toggle-nav">
+                    <a href="#">Home</a>
+                    <a href="#">Services</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+
+            <div class="nav-links">
+
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
             </div>
         </div>
 
-        <div class="hero-img">
+
+        <!--<div class="hero-img">
             <div class="hero-text">
                 <p class="name">Arr Services</p>
                 <p class="tag-line">Trustworthy protection for every event</p>
@@ -28,7 +42,23 @@
            
             <button>Get Started</button>
         </div>
+        !-->
     </header>
-    
+
+
+
+    <script>
+        function toggleOpacity() {
+            const toggleNav = document.querySelector('.toggle-nav');
+            const currentOpacity = parseFloat(window.getComputedStyle(toggleNav).getPropertyValue('0pacity'));
+            if (currentOpacity === 0) {
+                toggleNav.style.opacity = 1; /* Set full opacity */
+            } else{
+                toggleNav.style.opacity= 0
+            }
+        }
+
+    </script>
 </body>
+
 </html>
