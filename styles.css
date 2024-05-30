@@ -26,7 +26,7 @@ body {
 
 .nav-bar-container {
     background-color: #1A3A5A;
-    height: 10vh;
+    height: 8vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,17 +76,7 @@ body {
     display: none;
 }
 
-.hero-img {
-    background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
-    background-size: cover;
-    /* Cover the entire container */
-    background-position: center;
-    /* Center the image */
-    background-repeat: no-repeat;
-    /* Do not repeat the image */
-    height: 90vh;
-    /* Set the height to fill the viewport */
-}
+
 
 
 
@@ -121,8 +111,14 @@ body {
     }
 
     .hero-img {
+        background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
         background-size: contain;
-        background-position: unset;
+        background-repeat: no-repeat;
+        height: 90vh;
+    }
+
+    .nav-bar-container{
+        height: 6vh;
     }
 
 }
@@ -130,7 +126,25 @@ body {
 
 
 /* Styles for tablets */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .hero-img{
+        background-size: cover;
+        background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
+        background-repeat: no-repeat;
+        height: 90vh;
+    }
+
+}
 
 /* Styles for desktops and laptops */
-@media only screen and (min-width: 1024px) {}
+@media only screen and (min-width: 1024px) {
+
+    .hero-img {
+        background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 90vh;
+    }
+    
+}
