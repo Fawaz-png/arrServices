@@ -8,6 +8,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    border: 3px solid red;
 }
 
 :root {
@@ -23,102 +24,74 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.nav-bar {
-    background-color: var(--DarkBlue);
+.nav-bar-container {
+    background-color: #1A3A5A;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 8vh;
-    padding: 0 10px;
-    position: sticky;
-    top: 0;
 }
 
-.toggle {
-    color: black;
+.logo{
+    display: block;
+}
+
+.nav-bar a{
+    text-decoration: none;
+    color: var(--lightGrey);
+    font-size: 18px;
+}
+
+.dropdown{
     display: none;
-    font-size: 20px;
 }
 
-.toggle>a {
-    text-decoration: none;
-    font-size: 30px;
-    font-weight: bolder;
-    color: var(--Yellow);
-}
-
-.toggle-nav {
-    background-color: #555555;
-    position: absolute;
-    top: 99%;
-    right: 0;
-    width: 40%;
-    text-align: center;
-    display: flex;
+.dropdown-content {
+    display: none;
+    border: 1px solid red;
+    background-color: #FFD700;
     flex-direction: column;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1.5s ease;
 }
 
-.toggle-nav a {
-    font-size: 16px;
-    font-weight: lighter;
-    border: none;
-    padding: 20px;
-    text-decoration: none;
-    color: var(--offWhite);
+.dropdown-content a {
+    display: block;
+    padding: 10px 30px;
+    text-align: center;
 }
 
-.toggle:hover .toggle-nav {
+/* Dropdown content visible state */
+.dropdown-content.show {
+    display: block;
     opacity: 1;
 }
 
-
-
-
-.nav-bar>a {
-    text-decoration: none;
-    color: var(--Yellow);
-    font-size: 24px;
-}
-
-.nav-link a {
-    color: var(--offWhite);
-    margin: 0 5px;
-    font-size: 20px;
+/* Button styles (just for demonstration) */
+#dropdown-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    display: none;
 }
 
 .hero-img {
-    height: 100vh;
-    background-image: url(images/portrait-male-security-guard-with-uniform.jpg);
+    background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
     background-size: cover;
+    /* Cover the entire container */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    height: 90vh;
+    /* Set the height to fill the viewport */
 }
 
-.hero-text {
-    letter-spacing: 0.1em;
-}
 
-.hero-text> :first-child {
-    font-size: 28px;
-    color: var(--Yellow);
-}
 
-.tag-line {
-    font-size: 56px;
-    color: var(--lightGrey);
-    width: 60%;
-    font-weight: 100;
-}
 
-.hero-img button {
-    border-radius: 5px;
-    border: none;
-    background-color: gold;
-    padding: 15px 50px;
-    font-size: 24px;
-    font-weight: 500;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+
 
 
 
@@ -129,17 +102,29 @@ body {
 
 /* Styles for mobile devices */
 @media only screen and (max-width: 767px) {
-    .nav-links {
+    .nav-bar {
         display: none;
     }
 
-    .toggle {
+    #dropdown-btn {
+        display: block;
+        border: 5px solid black;
+    }
+
+    .dropdown-content {
+        position: absolute;
+        transform: translate(-30%, 8%);
+    }
+
+    .dropdown {
         display: block;
     }
 
-    .toggle-nav a:hover {
-        background-color: #1A3A5A;
+    .hero-img {
+        background-size: contain;
+        background-position: unset;
     }
+
 }
 
 

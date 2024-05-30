@@ -12,11 +12,10 @@
 
     <header>
 
-        <div class="nav-bar">
+        <div class="nav-bar-container">
             <a href="#" class="logo">Company Logo</a>
-            <div class="toggle" onclick="toggleOpacity()">
-                <a href="">=</a>
-                <div class="toggle-nav">
+            <div class="nav-bar">
+                <div class="nav-links">
                     <a href="#">Home</a>
                     <a href="#">Services</a>
                     <a href="#">About Us</a>
@@ -24,39 +23,58 @@
                 </div>
             </div>
 
-            <div class="nav-links">
 
-                <a href="#">Home</a>
-                <a href="#">Services</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
+            <div class="dropdown">
+                <button id="dropdown-btn">Click Me</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contact</a>
+                </div>
             </div>
         </div>
 
 
-        <!--<div class="hero-img">
-            <div class="hero-text">
-                <p class="name">Arr Services</p>
-                <p class="tag-line">Trustworthy protection for every event</p>
-            </div>
+
+
+
+        
+            <div class="hero-img">
+                <div class="hero-text">
+                    <p class="name">Arr Services</p>
+                    <p class="tag-line">Trustworthy protection for every event</p>
+                </div>
            
-            <button>Get Started</button>
-        </div>
-        !-->
+                <button>Get Started</button>
+            </div>
+    
     </header>
 
 
 
     <script>
-        function toggleOpacity() {
-            const toggleNav = document.querySelector('.toggle-nav');
-            const currentOpacity = parseFloat(window.getComputedStyle(toggleNav).getPropertyValue('0pacity'));
-            if (currentOpacity === 0) {
-                toggleNav.style.opacity = 1; /* Set full opacity */
-            } else{
-                toggleNav.style.opacity= 0
-            }
-        }
+
+       
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdownBtn = document.getElementById("dropdown-btn");
+            const dropdownContent = document.getElementById("dropdown-content");
+
+            // Toggle dropdown content visibility on button click
+            dropdownBtn.addEventListener("click", function () {
+                dropdownContent.classList.toggle("show");
+            });
+
+            // Hide dropdown content when clicking outside of it using event delegation
+            document.addEventListener("click", function (event) {
+                if (!dropdownBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+                    dropdownContent.classList.remove("show");
+                }
+            });
+        });
+
+    
 
     </script>
 </body>
