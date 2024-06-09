@@ -1,6 +1,8 @@
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
+
 
 *,
 *:before,
@@ -8,7 +10,8 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    border: 3px solid red;
+    
+    box-sizing: border-box;
 }
 
 :root {
@@ -24,127 +27,458 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.nav-bar-container {
-    background-color: #1A3A5A;
-    height: 8vh;
+
+
+/* Header styles */
+header {
+    background-color: var(--DarkBlue);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
-.logo{
-    display: block;
+#logo a {
+    text-decoration: none;
+    font-size: 26px;
+    color: var(--Yellow);
+    padding: 15px 0;
 }
 
-.nav-bar a{
+
+
+.nav-links {
+    display: flex;
+    justify-content: space-around; /* Space out the links evenly */
+}
+
+.nav-links a {
     text-decoration: none;
     color: var(--lightGrey);
-    font-size: 18px;
+    position: relative; /* Required for the underline and background effect */
+    padding: 10px 15px; /* Padding inside the navigation links */
+    transition: color 0.3s; /* Smooth color transition */
+    z-index: 0; /* Ensure the link text is above the background effect */
+    overflow: hidden; /* Hide overflow for smooth effect */
 }
 
-.dropdown{
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px; /* Underline height */
+    width: 100%;
+    background-color: black; /* Underline color */
+    z-index: -1; /* Ensure the underline is below the link text */
+    visibility: hidden;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Background color */
+    transform: scaleY(0); /* Start the background fill from the bottom */
+    transform-origin: bottom; /* Origin at the bottom for the vertical scaling */
+    transition: transform 0.3s ease-in-out 0.3s; /* Delay the background fill */
+    z-index: -2; /* Ensure the background fill is below the link text */
+}
+
+.nav-links a:hover::before {
+    visibility: visible;
+    animation: fill 1s forwards; /* Apply the fill animation */
+}
+
+.nav-links a:hover::after {
+    transform: scaleY(1); /* Fill the background upwards */
+    transition: transform 0.3s ease-out 0.3s forwards; /* Adjusted duration and easing function */
+}
+
+.nav-links a:hover {
+    color: white; /* Change text color on hover */
+}
+
+@keyframes fill {
+    0% {
+        width: 0%;
+        height: 2px;
+    }
+    50% {
+        width: 100%;
+        height: 2px;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+
+.dropdown {
+    position: relative;
     display: none;
-}
-
-.dropdown-content {
-    display: none;
-    border: 1px solid red;
-    background-color: #FFD700;
-    flex-direction: column;
-    transition: opacity 1.5s ease;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 10px 30px;
     text-align: center;
 }
 
-/* Dropdown content visible state */
-.dropdown-content.show {
+#dropdown-btn,
+#dropdown-content a {
     display: block;
-    opacity: 1;
-}
-
-/* Button styles (just for demonstration) */
-#dropdown-btn {
-    background-color: #4CAF50;
+    background-color: var(--DarkBlue);
     color: white;
-    padding: 10px;
-    border: none;
+    text-decoration: none;
     cursor: pointer;
+    border-radius: 4px;
+    width: 90px;
+}
+
+#dropdown-btn{
+    padding: 15px 0;
+}
+
+#dropdown-content a{
+    padding: 10px 15px;
+}
+
+#dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     display: none;
+    flex-direction: column;
+    width: 100%;
+    z-index: 100;
+    /* Ensure the content matches the trigger width */
+}
+
+#dropdown-content a {
+    background: var(--DarkBlue);
+    border: none;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    margin: 2px 0;
+    /* Small margin between items for better visibility */
+}
+
+#dropdown-content.stacked a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#dropdown-content.stacked a:nth-child(1) {
+    z-index: 4;
+}
+
+#dropdown-content.stacked a:nth-child(2) {
+    z-index: 3;
+}
+
+#dropdown-content.stacked a:nth-child(3) {
+    z-index: 2;
+}
+
+#dropdown-content.stacked a:nth-child(4) {
+    z-index: 1;
 }
 
 
+/* Media query for small screens */
+@media screen and (max-width: 768px) {
+    header {
+        height: 6vh;
+        align-items: center;
+    }
 
-
-
-
-
-
-
-
-
-/*Header Responsiveness for different screens*/
-/* For smaller screens */
-
-
-/* Styles for mobile devices */
-@media only screen and (max-width: 767px) {
-    .nav-bar {
+    .navbar {
         display: none;
-    }
-
-    #dropdown-btn {
-        display: block;
-        border: 5px solid black;
-    }
-
-    .dropdown-content {
-        position: absolute;
-        transform: translate(-30%, 8%);
     }
 
     .dropdown {
         display: block;
     }
+}
 
-    .hero-img {
-        background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 90vh;
-    }
 
-    .nav-bar-container{
-        height: 6vh;
-    }
-
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 0 20px;
 }
 
 
 
-/* Styles for tablets */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+.hero .content p {
+    font-size: 2em; /* Increased text size */
 
-    .hero-img{
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Light black overlay */
+    z-index: 1; /* Ensure the overlay is above the background but below the content */
+    display: none; /* Hide overlay by default */
+}
+
+
+.hero .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    position: absolute;
+    left: 60px;
+    top: 30%;
+    animation: fadeIn 2s ease-in-out;
+    position: relative;
+    z-index: 2;
+}
+
+.hero .content p,
+.hero .content .action-button {
+    opacity: 0;
+    animation: fadeInText 1s forwards;
+}
+
+.hero .content p:nth-child(1) {
+    animation-delay: 1s;
+    color: var(--Yellow);
+}
+
+.hero .content p:nth-child(2) {
+    animation-delay: 2s;
+    color: var(--lightGrey);
+}
+
+.hero .content .action-button {
+    background-color: #FFC107;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation-delay: 3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero .content .action-button:hover {
+    background-color: #FFD700;
+    transform: translateY(-2px);
+}
+
+/* Keyframes for animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero .overlay {
+        display: block; /* Show overlay on smaller screens */
+    }
+
+    .hero .content {
+        position: static;
+        align-items: center;
+        text-align: center;
+        left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 0 10px;
+    }
+
+    .hero .content p {
+        font-size: 1em;
+    }
+
+    .hero .content .action-button {
+        font-size: 1em;
+    }
+}
+
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+    .hero {
         background-size: cover;
-        background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
-        background-repeat: no-repeat;
-        height: 90vh;
+        background-position: center;
+        height: 50vh;
     }
 
-}
-
-/* Styles for desktops and laptops */
-@media only screen and (min-width: 1024px) {
-
-    .hero-img {
-        background-image: url('images/portrait-male-security-guard-with-uniform.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 90vh;
+    .hero .content .tagline {
+        font-size: 1.5em;
     }
-    
+
+    .hero .content .action-button {
+        padding: 8px 16px;
+        font-size: 1em;
+    }
 }
+
+
+
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-us {
+    padding: 40px 20px;
+    text-align: left;
+}
+
+.about-us h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* Adjust content flex properties */
+.about-us .content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.about-us .content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-us img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    flex: 1;
+}
+
+.about-us .text-content {
+    flex: 1;
+}
+
+.about-us .text-content p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-us .cta-button {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-us .cta-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-us {
+        padding: 30px 15px;
+    }
+
+    .about-us h2 {
+        font-size: 2em;
+    }
+
+    .about-us .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-us img {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-us .text-content p {
+        font-size: 1.1em;
+    }
+
+    .about-us .cta-button {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us {
+        padding: 20px 10px;
+    }
+
+    .about-us h2 {
+        font-size: 1.8em;
+    }
+
+    .about-us .text-content p {
+        font-size: 1em;
+    }
+
+    .about-us .cta-button {
+        font-size: 0.9em;
+    }
+}
+
+
+
+
+
+
+
+
+

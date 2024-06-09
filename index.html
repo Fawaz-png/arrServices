@@ -11,73 +11,87 @@
 <body>
 
     <header>
-
-        <div class="nav-bar-container">
-            <a href="#" class="logo">Company Logo</a>
-            
-            <div class="nav-bar">
-                <div class="nav-links">
-                    <a href="#">Home</a>
-                    <a href="#">Services</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
+        <div id="logo"><a href="#">Company Logo</a></div>
+        <nav>
+            <div class="navbar-container">
+                <div class="navbar">
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">Services</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="dropdown">
-                <button id="dropdown-btn">Click Me</button>
-                <div class="dropdown-content" id="dropdown-content">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Services</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Contact</a>
+
+
+
+                <div class="dropdown">
+                    <a id="dropdown-btn" href="#">Home</a>
+                    <div id="dropdown-content">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Services</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Contact</a>
+                    </div>
                 </div>
+
             </div>
-        </div>
-
-
-
-
-
-        
-            <div class="hero-img">
-                <div class="hero-text">
-                    <p class="name">Arr Services</p>
-                    <p class="tag-line">Trustworthy protection for every event</p>
-                </div>
-           
-                <button>Get Started</button>
-            </div>
-    
+        </nav>
     </header>
+    <main>
+        <section class="hero">
+            <div class="overlay"></div>
+            <div class="content">
+                <p>Arr Services</p>
+                <p class="tag-line">Trustworthy protection for every event</p>
+                <button class="action-button">Get Started</button>
+            </div>
+        </section>
+
+
+        <section class="about-us" id="about-us">
+            <div class="container">
+
+                <div class="content">
+                    <img src="images/3809367.jpg" alt="About Us Image">
+                    <div class="text-content">
+                        <h2>About Us</h2>
+                        <p>At ARR Security, we're your trusted event security experts. With years of industry
+                            experience, our dedicated team ensures the safety and success of every event. From corporate
+                            gatherings to high-profile functions, we provide tailored security solutions that prioritize
+                            your peace of mind.</p>
+                        <a href="#more" class="cta-button">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 
-    <script>
+        <section class="about-us">
+            <div class="sec-container">
+                <img src="" class="responsive-img">
+            </div>
+            <div class="intro">
+                <h1>About Us</h1>
+                <p>At ARR Security, we're your trusted event security
+                    experts. With years of industry experience, our
+                    dedicated team ensures the safety and success of
+                    every event. From corporate gatherings to high
+                    profile functions, we provide tailored security
+                    solutions that prioritize your peace of mind. Choose
+                    [Company Name] for seamless event security, so you
+                    can focus on creating unforgettable experiences</p>
+            </div>
+        </section>
+    </main>
 
-       
-        document.addEventListener("DOMContentLoaded", function () {
-            const dropdownBtn = document.getElementById("dropdown-btn");
-            const dropdownContent = document.getElementById("dropdown-content");
 
-            // Toggle dropdown content visibility on button click
-            dropdownBtn.addEventListener("click", function () {
-                dropdownContent.classList.toggle("show");
-            });
 
-            // Hide dropdown content when clicking outside of it using event delegation
-            document.addEventListener("click", function (event) {
-                if (!dropdownBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
-                    dropdownContent.classList.remove("show");
-                }
-            });
-        });
-
-    
-
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

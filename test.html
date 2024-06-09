@@ -4,113 +4,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cool Website with Scroll-Triggered Transition</title>
+    <title>Stacking Dropdown Menu</title>
     <style>
-        /* Basic styles */
+        /* styles.css */
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
         }
 
-        header {
-            background-color: #333;
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        #dropdown-btn,
+        #dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #007bff;
             color: white;
-            padding: 20px;
-            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 200px;
+            /* Set a fixed width for consistency */
+            box-sizing: border-box;
         }
 
-        main {
-            padding: 20px;
+        #dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            /* Ensure the content matches the trigger width */
         }
 
-        section {
-            height: 70vh;
-            border: 5px solid black;
-            margin-bottom: 50px;
-            text-align: center;
+        #dropdown-content a {
+            background: #007bff;
+            border: none;
             opacity: 0;
-            /* Initially hide sections */
-            transition: opacity 0.5s ease-in-out;
-            /* Smooth opacity transition */
+            transition: transform 0.3s, opacity 0.3s;
+            margin: 2px 0;
+            /* Small margin between items for better visibility */
         }
 
-        h2 {
-            margin-bottom: 20px;
+        #dropdown-content.stacked a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
         }
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
+        #dropdown-content.stacked a:nth-child(1) {
+            z-index: 4;
+        }
+
+        #dropdown-content.stacked a:nth-child(2) {
+            z-index: 3;
+        }
+
+        #dropdown-content.stacked a:nth-child(3) {
+            z-index: 2;
+        }
+
+        #dropdown-content.stacked a:nth-child(4) {
+            z-index: 1;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to My Cool Website</h1>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur turpis nulla, ac condimentum
-                felis tincidunt sit amet.</p>
-        </section>
-        <section id="services">
-            <h2>Services</h2>
-            <p>Sed lacinia nulla ac nunc tristique, vitae varius dolor faucibus. Vestibulum ante ipsum primis in
-                faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Phasellus non augue id mi convallis vehicula at eget nisi. Proin consectetur mauris eget risus
-                vestibulum, sed congue quam scelerisque.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Cool Website. All rights reserved.</p>
-    </footer>
+    <div class="dropdown">
+        <a id="dropdown-btn" href="#">Dropdown Menu</a>
+        <div id="dropdown-content">
+            <a href="#">Menu Item 1</a>
+            <a href="#">Menu Item 2</a>
+            <a href="#">Menu Item 3</a>
+            <a href="#">Menu Item 4</a>
+        </div>
+    </div>
     <script>
-        // Function to check if an element is in the viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= -50 && // Adjusted for a slight offset before fading out
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 50 && // Adjusted for a slight offset before fading out
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
+        // script.js
+        // script.js
+        document.addEventListener("DOMContentLoaded", () => {
+            const dropDownBtn = document.getElementById('dropdown-btn');
+            const dropDownContent = document.getElementById('dropdown-content');
+            let isOpen = false;
 
-        // Function to handle scroll events
-        function handleScroll() {
-            const sections = document.querySelectorAll("section");
-            sections.forEach(section => {
-                if (isInViewport(section)) {
-                    section.style.opacity = 1; // Fade in section if in viewport
+            dropDownBtn.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor behavior
+                if (isOpen) {
+                    // Animate back to stacked form and hide
+                    const items = dropDownContent.querySelectorAll('a');
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.transform = 'translateY(0)';
+                            item.style.opacity = '0';
+                        }, index * 100);
+                    });
+                    setTimeout(() => {
+                        dropDownContent.style.display = 'none';
+                    }, items.length * 100);
                 } else {
-                    section.style.opacity = calculateOpacity(section); // Fade out section if not in viewport
+                    // Show and animate to original position
+                    dropDownContent.style.display = 'flex';
+                    dropDownContent.classList.add('stacked');
+                    const items = dropDownContent.querySelectorAll('a');
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.transform = `translateY(${index * 40}px)`;
+                            item.style.opacity = '1';
+                        }, index * 100);
+                    });
                 }
+                isOpen = !isOpen;
             });
-        }
 
-        // Function to calculate opacity based on section position
-        // Function to calculate opacity based on section position
-        function calculateOpacity(section) {
-            const rect = section.getBoundingClientRect();
-            const offset = 50; // Offset value to start fading out before the section completely leaves the viewport
-            if (rect.top < -offset) {
-                return 0; // If section is above the viewport, fully fade out
-            } else if (rect.top < window.innerHeight) {
-                return 1 - (rect.top + offset) / window.innerHeight; // Gradually fade out as section scrolls out of view
-            } else {
-                return 1; // If section is below the viewport, fully visible
-            }
-        }
+            const menuItems = dropDownContent.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    dropDownBtn.textContent = item.textContent;
+                    dropDownContent.querySelectorAll('a').forEach(anchor => {
+                        anchor.style.transform = 'translateY(0)';
+                        anchor.style.opacity = '0';
+                    });
+                    setTimeout(() => {
+                        dropDownContent.style.display = 'none';
+                    }, menuItems.length * 100);
+                    isOpen = false;
+                });
+            });
+        });
 
-
-        // Listen for scroll events
-        window.addEventListener("scroll", handleScroll);
     </script>
 </body>
 
