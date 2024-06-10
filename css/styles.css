@@ -215,7 +215,7 @@ header {
 }
 
 
-.about-us-container {
+.about-us-container{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -229,9 +229,10 @@ header {
 .overview-text {
     max-width: 600px;
     text-align: left;
+    border: 1px solid red;
 }
 
-.overview-text h2 {
+.overview-text h2, .services-overview h2 {
     font-size: 2em;
     margin-bottom: 10px;
 }
@@ -243,13 +244,14 @@ header {
     color: #ccc;
 }
 
-.overview-text p {
+.overview-text p, .services-overview p{
     font-size: 1em;
     line-height: 1.5;
 }
 
 .discover-more-btn {
-    background-color: #333; /* Match the dark background color */
+    background-color: #333;
+    /* Match the dark background color */
     color: #ddd;
     font-size: 1.2em;
     padding: 15px 30px;
@@ -258,13 +260,17 @@ header {
     margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
-    border-radius: 8px; /* Add curved edges */
+    border-radius: 8px;
+    /* Add curved edges */
 }
 
 .discover-more-btn:hover {
-    background-color: #555; /* Slightly lighter on hover */
-    transform: scale(1.05); /* Slightly scale up */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+    background-color: #555;
+    /* Slightly lighter on hover */
+    transform: scale(1.05);
+    /* Slightly scale up */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Add shadow effect */
 }
 
 
@@ -335,18 +341,30 @@ header {
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
+
 }
 
 .indicator {
-    width: 10px;
-    height: 10px;
-    background-color: #aaa;
+    width: 15px;
+    height: 15px;
+    background-color: #c19957;
+    opacity: 0.5;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .indicator.active {
-    background-color: #ddd;
+    background-color: #c19957;
+    opacity: 1;
+    box-shadow: 0 0 12px #c19957;
+}
+
+.indicator.active:hover {
+    opacity: 1;
+}
+
+.indicator:hover {
+    opacity: 0.7;
 }
 
 
@@ -464,3 +482,89 @@ header {
 
 
 
+
+
+
+
+
+/* Services Section */
+.services{
+    background: linear-gradient(to bottom, #222 50%, #000 50%);
+    color: #ddd;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.services-container{
+    padding: 10% 0;
+}
+
+.services-overview {
+    text-align: left; /* Align text to the left to be consistent with the about-us section */
+    margin-bottom: 40px;
+    margin-left: 8%;
+    max-width: 600px;
+    border: 1px solid red;
+}
+
+
+.discover-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #ddd;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.discover-more-btn:hover {
+    background-color: #555;
+}
+
+.gallery-container {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: fit-content
+}
+
+.gallery-container, .gallery-container *{
+    border: 1px solid red;
+}
+
+
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 20px 10px;
+    }
+
+    .services-overview {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .gallery-container {
+        flex-direction: column;
+    }
+
+    .gallery {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .gallery-item {
+        min-width: calc(100% / 2 - 20px); /* Ensure aspect ratio */
+        height: calc(100% / 2 - 20px);
+        scroll-snap-align: start;
+    }
+
+    .arrow {
+        display: none;
+    }
+}

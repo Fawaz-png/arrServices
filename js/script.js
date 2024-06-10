@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hamburger-menu').addEventListener('click', () => {
         document.getElementById('mobile-menu').style.display = 'block';
     });
-    
+
     document.getElementById('close-btn').addEventListener('click', () => {
         document.getElementById('mobile-menu').style.display = 'none';
     });
-    
+
 });
 
 
@@ -71,8 +71,70 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.carousel').addEventListener('touchstart', handleTouchStart);
     document.querySelector('.carousel').addEventListener('touchmove', handleTouchMove);
     document.querySelector('.carousel').addEventListener('touchend', handleTouchEnd);
+});
 
-    // Pan view functionality
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const commentForm = document.getElementById('commentForm');
+    const commentsSection = document.getElementById('commentsSection');
+
+    commentForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('commentName').value;
+        const text = document.getElementById('commentText').value;
+
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+
+        const commentName = document.createElement('h4');
+        commentName.textContent = name;
+
+        const commentText = document.createElement('p');
+        commentText.textContent = text;
+
+        commentDiv.appendChild(commentName);
+        commentDiv.appendChild(commentText);
+
+        commentsSection.appendChild(commentDiv);
+
+        // Clear the form
+        commentForm.reset();
+    });
+});
+
+
+
+
+
+
+
+/*
+
+ //Pan view functionality
     const playPauseButton = document.getElementById('play-pause-pan-view');
     let isPlaying = false;
     let autoPlayInterval;
@@ -123,42 +185,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     showSlide(currentIndex);
-});
 
-
-
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    const commentForm = document.getElementById('commentForm');
-    const commentsSection = document.getElementById('commentsSection');
-
-    commentForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('commentName').value;
-        const text = document.getElementById('commentText').value;
-
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-
-        const commentName = document.createElement('h4');
-        commentName.textContent = name;
-
-        const commentText = document.createElement('p');
-        commentText.textContent = text;
-
-        commentDiv.appendChild(commentName);
-        commentDiv.appendChild(commentText);
-
-        commentsSection.appendChild(commentDiv);
-
-        // Clear the form
-        commentForm.reset();
-    });
-});
+    */
