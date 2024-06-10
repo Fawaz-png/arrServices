@@ -194,7 +194,6 @@ header {
 /* Media query for small screens */
 @media screen and (max-width: 768px) {
     header {
-        height: 6vh;
         align-items: center;
     }
 
