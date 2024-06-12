@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Card Opening Effect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Services Section */
+    .services {
+        background: linear-gradient(to bottom, #333 50%, #000 50%);
+        padding: 40px;
+        color: white;
+    }
+
+    .services-overview {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .services-overview h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .services-overview p {
+        font-size: 1.2em;
+    }
+
+    .services-gallery-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .arrow {
+        cursor: pointer;
+        font-size: 2em;
+        color: white;
+        user-select: none;
+    }
+
+    .services-gallery {
+        display: flex;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        width: 80%;
+    }
+
+    .service-item {
+        min-width: 300px;
+        margin: 0 10px;
+        flex: 0 0 auto;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-card {
+        background: #444;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .service-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .service-card h3 {
+        margin: 10px 0 5px;
+    }
+
+    .service-card p {
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .services {
+            padding: 20px;
+        }
+
+        .services-overview {
+            text-align: center;
+        }
+
+        .services-gallery-container {
+            flex-direction: column;
+        }
+
+        .arrow {
+            display: none;
+        }
+
+        .services-gallery {
+            width: 100%;
+            overflow-x: scroll;
+        }
+
+        .service-item {
+            min-width: 80%;
+            margin: 0 10px;
+        }
+    }
+</style>
+
+<body>
+    <section class="services">
+        <div class="services-overview">
+            <h2>Our Services</h2>
+            <p>Explore the range of services we offer to our clients.</p>
+        </div>
+        <div class="services-gallery-container">
+            <div class="arrow arrow-left">&lt;</div>
+            <div class="services-gallery">
+                <div class="service-item">
+                    <div class="service-card">
+                        <img src="service1.jpg" alt="Service 1" />
+                        <h3>Service 1</h3>
+                        <p>Brief description of Service 1.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-card">
+                        <img src="service2.jpg" alt="Service 2" />
+                        <h3>Service 2</h3>
+                        <p>Brief description of Service 2.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-card">
+                        <img src="service3.jpg" alt="Service 3" />
+                        <h3>Service 3</h3>
+                        <p>Brief description of Service 3.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-card">
+                        <img src="service4.jpg" alt="Service 4" />
+                        <h3>Service 4</h3>
+                        <p>Brief description of Service 4.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-card">
+                        <img src="service5.jpg" alt="Service 5" />
+                        <h3>Service 5</h3>
+                        <p>Brief description of Service 5.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow arrow-right">&gt;</div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gallery = document.querySelector('.services-gallery');
+            const leftArrow = document.querySelector('.arrow-left');
+            const rightArrow = document.querySelector('.arrow-right');
+            let scrollAmount = 0;
+
+            rightArrow.addEventListener('click', () => {
+                gallery.scrollTo({
+                    top: 0,
+                    left: (scrollAmount += gallery.clientWidth),
+                    behavior: 'smooth'
+                });
+            });
+
+            leftArrow.addEventListener('click', () => {
+                gallery.scrollTo({
+                    top: 0,
+                    left: (scrollAmount -= gallery.clientWidth),
+                    behavior: 'smooth'
+                });
+            });
+
+            gallery.addEventListener('scroll', () => {
+                if (gallery.scrollLeft === 0) {
+                    leftArrow.style.visibility = 'hidden';
+                } else {
+                    leftArrow.style.visibility = 'visible';
+                }
+
+                if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth) {
+                    rightArrow.style.visibility = 'hidden';
+                } else {
+                    rightArrow.style.visibility = 'visible';
+                }
+            });
+
+            // Initialize arrows visibility
+            gallery.dispatchEvent(new Event('scroll'));
+
+            // Swipe effect for mobile devices
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            gallery.addEventListener('mousedown', (e) => {
+                isDown = true;
+                gallery.classList.add('active');
+                startX = e.pageX - gallery.offsetLeft;
+                scrollLeft = gallery.scrollLeft;
+            });
+
+            gallery.addEventListener('mouseleave', () => {
+                isDown = false;
+                gallery.classList.remove('active');
+            });
+
+            gallery.addEventListener('mouseup', () => {
+                isDown = false;
+                gallery.classList.remove('active');
+            });
+
+            gallery.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - gallery.offsetLeft;
+                const walk = (x - startX) * 2; //scroll-fast
+                gallery.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

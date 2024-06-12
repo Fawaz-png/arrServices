@@ -9,7 +9,7 @@ html {
 *:after {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 
@@ -79,7 +79,6 @@ header {
     background-color: #333;
     color: #fff;
     padding: 20px;
-    box-sizing: border-box;
     z-index: 100;
 }
 
@@ -96,7 +95,6 @@ header {
     padding: 10px 0;
     border-bottom: 1px solid #fff;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .mobile-menu .cta {
@@ -211,11 +209,10 @@ header {
     background-color: #222;
     color: #ddd;
     padding: 40px 0;
-    box-sizing: border-box;
 }
 
 
-.about-us-container{
+.section-container {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -229,10 +226,10 @@ header {
 .overview-text {
     max-width: 600px;
     text-align: left;
-    border: 1px solid red;
 }
 
-.overview-text h2, .services-overview h2 {
+.overview-text h2,
+.services-overview h2 {
     font-size: 2em;
     margin-bottom: 10px;
 }
@@ -244,7 +241,8 @@ header {
     color: #ccc;
 }
 
-.overview-text p, .services-overview p{
+.overview-text p,
+.services-overview p {
     font-size: 1em;
     line-height: 1.5;
 }
@@ -371,9 +369,10 @@ header {
 @media (max-width: 768px) {
     .about-us {
         padding: 10px;
+        margin-top: -1px;
     }
 
-    .about-us-container {
+    .section-container {
         flex-direction: column;
         align-items: center;
         width: 100%;
@@ -400,6 +399,10 @@ header {
 }
 
 @media (max-width: 480px) {
+    .about-us {
+        margin-top: -1px;
+    }
+
     .carousel {
         height: 100vw;
         /* Maintain a square shape based on viewport width */
@@ -416,155 +419,114 @@ header {
     }
 }
 
-/* Pan view styles */
-.carousel-pan-view {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
-.carousel-pan-controls {
-    position: absolute;
-    top: 20px;
-    display: flex;
-    gap: 10px;
-}
-
-.carousel-pan-controls button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5em;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.carousel-pan-controls button:hover {
-    color: #aaa;
-}
-
-.carousel-pan-controls i {
-    pointer-events: none;
-}
-
-
-.carousel-pan-image {
-    width: 80%;
-    height: 80%;
-    background: center/contain no-repeat;
-}
-
-.carousel-pan-view.show {
-    display: flex;
-}
-
-#carousel-thumbnails {
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.thumbnail {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
-/* Services Section */
-.services{
+#services {
     background: linear-gradient(to bottom, #222 50%, #000 50%);
-    color: #ddd;
-    padding: 40px 20px;
-    box-sizing: border-box;
-}
-
-.services-container{
-    padding: 10% 0;
-}
-
-.services-overview {
-    text-align: left; /* Align text to the left to be consistent with the about-us section */
-    margin-bottom: 40px;
-    margin-left: 8%;
-    max-width: 600px;
-    border: 1px solid red;
-}
-
-
-.discover-more-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #444;
-    color: #ddd;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.discover-more-btn:hover {
-    background-color: #555;
-}
-
-.gallery-container {
-    display: flex;
-    align-items: center;
+    padding: 60px 20px;
+    text-align: center;
     overflow: hidden;
+    /* Hide overflow to prevent scrollbar */
     position: relative;
-    width: fit-content
 }
 
-.gallery-container, .gallery-container *{
-    border: 1px solid red;
+#services .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #ccc;
 }
 
+.swiper-container {
+    width: 100%;
+    padding: 40px 0;
+    position: relative;
+}
 
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.service-block {
+    width: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.service-block img {
+    width: 100%;
+    height: 320px;
+    /* Make the image taller */
+    object-fit: cover;
+    /* Ensure the image covers the block */
+    border-radius: 10px;
+}
+
+.service-block .description {
+    background: #fff;
+    padding: 20px;
+    text-align: left;
+    width: 100%;
+    /* Ensure the description takes full width */
+}
+
+/* Hide arrows and indicators initially */
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show arrows and indicators on hover */
+#services:hover .swiper-button-next,
+#services:hover .swiper-button-prev,
+#services:hover .swiper-pagination {
+    opacity: 1;
+}
+
+/* Customize arrow colors */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ddd;
+    /* Change arrow color to #ddd */
+}
+
+.swiper-pagination-bullet-active {
+    background: #c19957;
+    /* Change pagination active color to #c19957 */
+}
+
+/* Ensure mobile responsiveness */
 @media (max-width: 768px) {
-    .services-section {
-        padding: 20px 10px;
+    #services{
+        margin-top: -1px;
     }
 
-    .services-overview {
-        text-align: center;
-        margin-left: 0;
+    .swiper-slide {
+        width: 100%;
     }
 
-    .gallery-container {
-        flex-direction: column;
+    .service-block {
+        width: 90%;
+        /* Adjust width to fit within the viewport */
     }
 
-    .gallery {
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-    }
-
-    .gallery-item {
-        min-width: calc(100% / 2 - 20px); /* Ensure aspect ratio */
-        height: calc(100% / 2 - 20px);
-        scroll-snap-align: start;
-    }
-
-    .arrow {
+    /* Disable arrows and pagination for mobile portrait view */
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-pagination {
         display: none;
+    }
+
+    .swiper-button-next{
+        display: none;
+        visibility: hidden;
+    }
+
+    .swiper-button-prev{
+        display: none;
+        visibility: hidden;
     }
 }

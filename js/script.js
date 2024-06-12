@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     const commentForm = document.getElementById('commentForm');
     const commentsSection = document.getElementById('commentsSection');
 
@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         commentForm.reset();
     });
 });
+*/
 
 
 
@@ -132,58 +133,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-/*
-
- //Pan view functionality
-    const playPauseButton = document.getElementById('play-pause-pan-view');
-    let isPlaying = false;
-    let autoPlayInterval;
-
-    const togglePlayPause = () => {
-        if (isPlaying) {
-            clearInterval(autoPlayInterval);
-            playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
-        } else {
-            autoPlayInterval = setInterval(goToNextSlide, 2000);
-            playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-        }
-        isPlaying = !isPlaying;
-    };
-
-    playPauseButton.addEventListener('click', togglePlayPause);
-
-    // Pan view functionality
-    const openPanView = (src) => {
-        panImage.style.backgroundImage = `url(${src})`;
-        panView.classList.add('show');
-    };
-
-    const closePanView = () => {
-        panView.classList.remove('show');
-        clearInterval(autoPlayInterval);
-        playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
-        isPlaying = false;
-    };
-
-    slides.forEach(slide => {
-        slide.addEventListener('click', () => {
-            const img = slide.querySelector('img');
-            openPanView(img.src);
-        });
-    });
-
-    document.getElementById('close-pan-view').addEventListener('click', closePanView);
-    panView.addEventListener('click', (e) => {
-        if (e.target === panView) closePanView();
-    });
-
-    // Thumbnail functionality
-    thumbnails.forEach((thumbnail, index) => {
-        thumbnail.addEventListener('click', () => {
-            openPanView(thumbnail.src);
-        });
-    });
-
-    showSlide(currentIndex);
-
-    */
