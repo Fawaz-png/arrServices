@@ -140,6 +140,7 @@ header {
     align-items: center;
     justify-content: flex-start;
     color: #fff;
+    background: url('../images/freepik-export-20240615150546asuj.jpeg') no-repeat center top;
 }
 
 .hero-image {
@@ -151,6 +152,7 @@ header {
     top: 0;
     left: 0;
     z-index: 1;
+    display: none;
 }
 
 .hero-text {
@@ -194,6 +196,11 @@ header {
     .hero {
         justify-content: center;
         text-align: center;
+        background: none;
+    }
+
+    .hero-image{
+        display: block;
     }
 
     .hero-text {
@@ -434,6 +441,7 @@ header {
     margin: 0 auto;
     color: #ccc;
 }
+
 
 .swiper-container {
     width: 100%;

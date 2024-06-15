@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            background-color: #f5f5f5;
+        }
+
+        .hero-section {
+            background: url('images/portrait-male-security-guard-with-uniform.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .history-section,
+        .team-section,
+        .footer-section {
+            padding: 4em 2em;
+            text-align: center;
+            background-color: white;
+            margin: 2em 0;
+        }
+
+        .history-section h2,
+        .team-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 1em;
+        }
+
+        .timeline-section {
+            padding: 4em 2em;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .timeline-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 2em;
+        }
+
+        .tree-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tree {
+            position: relative;
+            width: 2px;
+            background: #4CAF50;
+            margin: 0 auto;
+        }
+
+        .tree-event {
+            background: white;
+            padding: 1em;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            position: absolute;
+            width: 200px;
+        }
+
+        .tree-event h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .tree-event p {
+            margin: 0.5em 0 0;
+        }
+
+        .tree-event:nth-child(1) {
+            top: 0;
+            left: -220px;
+        }
+
+        .tree-event:nth-child(2) {
+            top: 150px;
+            left: 20px;
+        }
+
+        .tree-event:nth-child(3) {
+            top: 300px;
+            left: -220px;
+        }
+
+        .tree-event:nth-child(4) {
+            top: 450px;
+            left: 20px;
+        }
+
+        .tree-event:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2em;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            width: 250px;
+        }
+
+        .team-member:hover {
+            transform: scale(1.1);
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member h3 {
+            margin: 1em 0 0.5em;
+            font-size: 1.2em;
+        }
+
+        .team-member p {
+            font-size: 1em;
+            color: #777;
+        }
+
+        .footer-section {
+            background: #333;
+            color: white;
+            padding: 2em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-section p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">Welcome to Our Company</h1>
+            <p data-aos="fade-up" data-aos-delay="200">We are committed to delivering the best service.</p>
+        </div>
+    </header>
+
+    <section class="history-section">
+        <h2 data-aos="fade-right">Our History</h2>
+        <p data-aos="fade-right" data-aos-delay="200">Founded in 1990, our company has grown from a small startup to
+            a global leader in our industry.</p>
+    </section>
+
+    <section class="timeline-section">
+        <h2 data-aos="fade-up">Our Growth Journey</h2>
+        <div class="timeline">
+            <div class="timeline-event" data-aos="fade-up" data-year="1990">
+                <h3>1990</h3>
+                <p>Company founded.</p>
+            </div>
+            <div class="timeline-event" data-aos="fade-up" data-year="2000" data-aos-delay="200">
+                <h3>2000</h3>
+                <p>Reached 1 million customers.</p>
+            </div>
+            <div class="timeline-event" data-aos="fade-up" data-year="2010" data-aos-delay="400">
+                <h3>2010</h3>
+                <p>Expanded to international markets.</p>
+            </div>
+            <div class="timeline-event" data-aos="fade-up" data-year="2020" data-aos-delay="600">
+                <h3>2020</h3>
+                <p>Launched new innovative products.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2 data-aos="fade-up">Meet Our Team</h2>
+        <div class="team-members">
+            <div class="team-member" data-aos="flip-left">
+                <img src="images/portrait-male-security-guard-with-uniform.jpg" alt="Team Member 1">
+                <h3>John Doe</h3>
+                <p>CEO</p>
+            </div>
+            <div class="team-member" data-aos="flip-left" data-aos-delay="200">
+                <img src="images/portrait-male-security-guard-with-uniform.jpg" alt="Team Member 2">
+                <h3>Jane Smith</h3>
+                <p>CTO</p>
+            </div>
+            <div class="team-member" data-aos="flip-left" data-aos-delay="400">
+                <img src="images/portrait-male-security-guard-with-uniform.jpg" alt="Team Member 3">
+                <h3>Emily Johnson</h3>
+                <p>COO</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <p>&copy; 2024 Our Company. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 1000,
+                easing: 'ease-in-out',
+                once: true,
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
