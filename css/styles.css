@@ -199,7 +199,7 @@ header {
         background: none;
     }
 
-    .hero-image{
+    .hero-image {
         display: block;
     }
 
@@ -225,7 +225,7 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    width: fit-content;
+    max-width: fit-content;
     margin: 0 auto;
     padding: 5% 0;
 }
@@ -233,6 +233,7 @@ header {
 .overview-text {
     max-width: 600px;
     text-align: left;
+    padding: 10px;
 }
 
 .overview-text h2,
@@ -472,7 +473,7 @@ header {
 }
 
 .service-block .description {
-    background: #fff;
+    background: transparent;
     padding: 20px;
     text-align: left;
     width: 100%;
@@ -508,7 +509,7 @@ header {
 
 /* Ensure mobile responsiveness */
 @media (max-width: 768px) {
-    #services{
+    #services {
         margin-top: -1px;
     }
 
@@ -528,13 +529,340 @@ header {
         display: none;
     }
 
-    .swiper-button-next{
+    .swiper-button-next {
         display: none;
         visibility: hidden;
     }
 
-    .swiper-button-prev{
+    .swiper-button-prev {
         display: none;
         visibility: hidden;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.why-choose-us {
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #000 50%, #222 50%);
+    color: #ccc;
+}
+
+.why-choose-us h2,
+.why-choose-us h3 {
+    text-align: center;
+}
+
+.why-choose-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.why-choose-us h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.selling-points .grid-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.selling-points .grid-item{
+    flex: 1 1 calc(50% - 20px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.selling-points .grid-item:hover,
+.our-values .box:hover {
+    transform: translateY(-10px);
+}
+
+.selling-points .card{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.selling-points .image-container{
+    height: 100%;
+    
+}
+
+.selling-points .card img{
+   border-radius: 10px;
+    max-width: 200px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.selling-points .text-content{
+    flex: 1;
+}
+
+.selling-points .text-content h4{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.selling-points .text-content p,
+.our-values .text-content p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.selling-points .tick {
+    color: green;
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .selling-points .grid-container,
+    .our-values .box-container {
+        flex-direction: column;
+    }
+
+    .selling-points .grid-item,
+    .our-values .box {
+        flex: 1 1 100%;
+    }
+
+    .selling-points .card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .selling-points .card img {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .selling-points .text-content,
+    .our-values .text-content {
+        text-align: center;
+    }
+
+    .selling-points .text-content h4{
+        justify-content: center;
+    }
+}
+
+
+/* Our Values Section */
+.our-values h3{
+    margin-top: 50px;
+}
+.values-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .value-box {
+    flex: 1 1 calc(50% - 20px); /* Each box takes 50% width with some gap */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .value-box .text-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .value-box:last-child {
+    margin-bottom: 0; /* Remove margin bottom for last box */
+  }
+  
+  .value-box .icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .value-box h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .value-box p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  /* Responsive Styling */
+  
+  /* Mobile Portrait View */
+  @media (max-width: 480px) {
+    .values-container {
+      flex-direction: column; /* Display boxes in a column */
+      align-items: center; /* Center-align items */
+    }
+  
+    .value-box {
+      width: 100%; /* Full width */
+      max-width: none; /* Remove max-width */
+    }
+  }
+  
+  /* Tablet Portrait and Landscape View */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .values-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  
+    .value-box {
+      flex: 1 1 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+  }
+  
+
+
+  section.testimonials {
+    background-color: #222;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section.testimonials h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.testimonial-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.testimonial {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+    color: #555;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial h4 {
+    color: #333;
+    font-weight: normal;
+}
+
+
+
+
+
+
+section.location {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #000;
+}
+
+section.location h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.map-container {
+    max-width: 800px;
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+section.contact-us {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section.contact-us h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#contact-form input, #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#contact-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0056b3;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #004494;
+}
+
+

@@ -4,212 +4,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>Why Choose Us</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
 
-        .gallery-container {
-            display: flex;
-            align-items: center;
+        .why-choose-us {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            position: relative;
-            width: 100vw;
+            transition: transform 0.3s;
         }
 
-        .arrow {
-            background: none;
-            border: none;
-            font-size: 2em;
-            cursor: pointer;
-            z-index: 10;
-            padding: 0 10px;
+        .why-choose-us:hover {
+            transform: scale(1.02);
         }
 
-        .arrow.left {
-            position: absolute;
-            left: 0;
-        }
-
-        .arrow.right {
-            position: absolute;
-            right: 0;
-        }
-
-        .gallery {
-            display: flex;
-            overflow: hidden;
-            /* hide scrollbar */
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            width: 100%;
-        }
-
-        .gallery-item {
-            min-width: 500px;
-            max-width: 500px;
-            height: 600px;
-            scroll-snap-align: start;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0 10px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-        }
-
-        .description {
+        .why-choose-us h2 {
+            color: #00796b;
             text-align: center;
-            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            position: relative;
         }
 
-        @media (max-width: 768px) {
-            .gallery-item {
-                min-width: 90vw;
-                max-width: 90vw;
-            }
-
-            .arrow {
-                display: none;
-            }
+        .why-choose-us h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #00796b;
+            margin: 10px auto 0;
         }
 
-        /* Hide scrollbar */
-        .gallery {
-            -ms-overflow-style: none;
-            /* IE and Edge */
-            scrollbar-width: none;
-            /* Firefox */
+        .why-choose-us h3 {
+            color: #004d40;
+            margin-bottom: 10px;
+            font-size: 1.5em;
         }
 
-        .gallery::-webkit-scrollbar {
-            display: none;
-            /* Chrome, Safari and Opera */
+        .why-choose-us p,
+        .why-choose-us ul {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .why-choose-us ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .why-choose-us ul li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .why-choose-us ul li::before {
+            content: "✓";
+            color: #00796b;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+            top: 0;
+        }
+
+        .why-choose-us ul li strong {
+            color: #00796b;
+        }
+
+        .why-choose-us img {
+            display: block;
+            max-width: 100%;
+            margin: 20px auto;
+            border-radius: 8px;
         }
     </style>
 </head>
 
 <body>
-    <div class="gallery-container">
-        <button class="arrow left">&#9664;</button>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/500x600" alt="Image 1">
-                <div class="description">
-                    <h2>Image 1 Title</h2>
-                    <p>Description for image 1.</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/500x600" alt="Image 2">
-                <div class="description">
-                    <h2>Image 2 Title</h2>
-                    <p>Description for image 2.</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/500x600" alt="Image 3">
-                <div class="description">
-                    <h2>Image 3 Title</h2>
-                    <p>Description for image 3.</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/500x600" alt="Image 4">
-                <div class="description">
-                    <h2>Image 4 Title</h2>
-                    <p>Description for image 4.</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/500x600" alt="Image 5">
-                <div class="description">
-                    <h2>Image 5 Title</h2>
-                    <p>Description for image 5.</p>
-                </div>
-            </div>
-        </div>
-        <button class="arrow right">&#9654;</button>
+
+    <div class="why-choose-us">
+        <h2>Why Choose Us</h2>
+
+        <h3>Our Selling Points</h3>
+        <ul>
+            <li>
+                <strong>Expertise and Experience:</strong> With years of experience in the industry, our team of highly
+                trained security professionals is equipped to handle events of all sizes and types. Our deep
+                understanding of security dynamics ensures that we can anticipate and mitigate risks effectively.
+                <img src="https://via.placeholder.com/800x400" alt="Expertise and Experience">
+            </li>
+            <li>
+                <strong>Customized Solutions:</strong> We believe that every event is unique, and so are its security
+                needs. We work closely with our clients to develop customized security plans that address their specific
+                requirements, ensuring a seamless and secure event experience.
+                <img src="https://via.placeholder.com/800x400" alt="Customized Solutions">
+            </li>
+            <li>
+                <strong>Comprehensive Services:</strong> Beyond event security, we offer a wide range of services
+                including crowd management, access control, risk assessment, and emergency response planning. Our
+                all-encompassing approach means you can rely on us for all your event-related needs.
+                <img src="https://via.placeholder.com/800x400" alt="Comprehensive Services">
+            </li>
+            <li>
+                <strong>State-of-the-Art Technology:</strong> We leverage the latest security technologies and equipment
+                to provide top-notch protection. Our investment in advanced tools and continuous training ensures we are
+                always ahead of potential threats.
+                <img src="https://via.placeholder.com/800x400" alt="State-of-the-Art Technology">
+            </li>
+        </ul>
+
+        <h3>Our Values</h3>
+        <ul>
+            <li>
+                <strong>Integrity:</strong> We conduct our business with the highest ethical standards, ensuring honesty
+                and transparency in all our interactions.
+                <img src="https://via.placeholder.com/800x400" alt="Integrity">
+            </li>
+            <li>
+                <strong>Professionalism:</strong> Our team is composed of seasoned professionals who are committed to
+                delivering the best service with courtesy, respect, and efficiency.
+                <img src="https://via.placeholder.com/800x400" alt="Professionalism">
+            </li>
+            <li>
+                <strong>Dedication:</strong> We are passionate about what we do and are dedicated to ensuring the safety
+                and success of your event. Your peace of mind is our priority.
+                <img src="https://via.placeholder.com/800x400" alt="Dedication">
+            </li>
+            <li>
+                <strong>Client-Centric Approach:</strong> We prioritize our clients' needs and work tirelessly to exceed
+                their expectations. Our focus on building strong, lasting relationships is at the core of our business.
+                <img src="https://via.placeholder.com/800x400" alt="Client-Centric Approach">
+            </li>
+        </ul>
+
+        <h3>Why Hire Us</h3>
+        <ul>
+            <li>
+                <strong>Reliability:</strong> You can count on us to be there when you need us, delivering consistent
+                and dependable service every time.
+                <img src="https://via.placeholder.com/800x400" alt="Reliability">
+            </li>
+            <li>
+                <strong>Tailored Approach:</strong> Our personalized solutions mean that your event receives the
+                specific attention it deserves, ensuring all aspects are covered.
+                <img src="https://via.placeholder.com/800x400" alt="Tailored Approach">
+            </li>
+            <li>
+                <strong>Proven Track Record:</strong> Our history of successful events and satisfied clients speaks for
+                itself. We have a proven track record of delivering high-quality security services.
+                <img src="https://via.placeholder.com/800x400" alt="Proven Track Record">
+            </li>
+            <li>
+                <strong>Peace of Mind:</strong> By hiring ARR Services, you can focus on the other aspects of your
+                event, knowing that your security needs are in expert hands.
+                <img src="https://via.placeholder.com/800x400" alt="Peace of Mind">
+            </li>
+        </ul>
     </div>
 
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const gallery = document.querySelector('.gallery');
-
-            // Arrow click handling
-            document.body.addEventListener('click', (event) => {
-                if (event.target.classList.contains('arrow')) {
-                    if (event.target.classList.contains('left')) {
-                        gallery.scrollBy({ left: -250, behavior: 'smooth' });
-                    } else if (event.target.classList.contains('right')) {
-                        gallery.scrollBy({ left: 250, behavior: 'smooth' });
-                    }
-                }
-            });
-
-            // Swiping and dragging
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-
-            gallery.addEventListener('mousedown', (e) => {
-                isDown = true;
-                gallery.classList.add('active');
-                startX = e.pageX - gallery.offsetLeft;
-                scrollLeft = gallery.scrollLeft;
-            });
-
-            gallery.addEventListener('mouseleave', () => {
-                isDown = false;
-                gallery.classList.remove('active');
-            });
-
-            gallery.addEventListener('mouseup', () => {
-                isDown = false;
-                gallery.classList.remove('active');
-            });
-
-            gallery.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - gallery.offsetLeft;
-                const walk = (x - startX) * 2; //scroll-fast
-                gallery.scrollLeft = scrollLeft - walk;
-            });
-
-            gallery.addEventListener('touchstart', (e) => {
-                isDown = true;
-                startX = e.touches[0].pageX - gallery.offsetLeft;
-                scrollLeft = gallery.scrollLeft;
-            });
-
-            gallery.addEventListener('touchend', () => {
-                isDown = false;
-            });
-
-            gallery.addEventListener('touchmove', (e) => {
-                if (!isDown) return;
-                const x = e.touches[0].pageX - gallery.offsetLeft;
-                const walk = (x - startX) * 2; //scroll-fast
-                gallery.scrollLeft = scrollLeft - walk;
-            });
-        });
-
-
-
-    </script>
 </body>
 
 </html>
