@@ -138,9 +138,12 @@ header {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    /* Center the content */
     color: #fff;
-    background: url('../images/freepik-export-20240615150546asuj.jpeg') no-repeat center top;
+    background: url('../images/freepik-export-20240615150546asuj.jpeg') no-repeat center center;
+    background-size: cover;
+    /* Ensure the background image covers the entire section */
 }
 
 .hero-image {
@@ -158,23 +161,21 @@ header {
 .hero-text {
     position: relative;
     z-index: 2;
-    padding-left: 20px;
-    max-width: 500px;
+    padding: 20px;
+    max-width: 90%;
+    /* Increased max-width for smaller screens */
+    text-align: center;
 }
 
 .hero-text h1 {
     font-size: 3em;
-    /* Increased font size */
     font-weight: 400;
-    /* Lighter font weight */
     margin-bottom: 20px;
 }
 
 .hero-text h2 {
     font-size: 2em;
-    /* Increased font size */
     font-weight: 300;
-    /* Lighter font weight */
     margin-bottom: 20px;
 }
 
@@ -192,8 +193,36 @@ header {
     color: #fff;
 }
 
-@media (max-width: 768px) {
+/* Tablet Portrait and Landscape */
+@media (max-width: 1024px) {
     .hero {
+        height: 80vh;
+        /* Adjust height for tablets */
+        background-position: center center;
+    }
+
+    .hero-text {
+        max-width: 80%;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-text h2 {
+        font-size: 1.5em;
+    }
+
+    .hero-text .cta {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        height: 70vh;
         justify-content: center;
         text-align: center;
         background: none;
@@ -205,7 +234,52 @@ header {
 
     .hero-text {
         padding: 0 20px;
-        /* Added padding to avoid text being too close to edges */
+        max-width: 80%;
+    }
+
+    .hero-text h1 {
+        font-size: 2em;
+    }
+
+    .hero-text h2 {
+        font-size: 1.2em;
+    }
+
+    .hero-text .cta {
+        padding: 10px 25px;
+        font-size: 0.9em;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) and (orientation: portrait) {
+    .hero {
+        height: 80vh;
+        justify-content: center;
+        text-align: center;
+        background: none;
+    }
+
+    .hero-image {
+        display: block;
+    }
+
+    .hero-text {
+        padding: 0 10px;
+        max-width: 90%;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-text h2 {
+        font-size: 1em;
+    }
+
+    .hero-text .cta {
+        padding: 8px 20px;
+        font-size: 0.8em;
     }
 }
 
@@ -218,14 +292,13 @@ header {
     padding: 40px 0;
 }
 
-
 .section-container {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    max-width: fit-content;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 5% 0;
 }
@@ -257,7 +330,6 @@ header {
 
 .discover-more-btn {
     background-color: #333;
-    /* Match the dark background color */
     color: #ddd;
     font-size: 1.2em;
     padding: 15px 30px;
@@ -267,20 +339,14 @@ header {
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
     border-radius: 8px;
-    /* Add curved edges */
 }
 
 .discover-more-btn:hover {
     background-color: #555;
-    /* Slightly lighter on hover */
     transform: scale(1.05);
-    /* Slightly scale up */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    /* Add shadow effect */
 }
 
-
-/* Carousel Styling */
 .carousel-wrapper {
     display: flex;
     justify-content: space-between;
@@ -294,9 +360,10 @@ header {
     position: relative;
     overflow: hidden;
     flex: 1;
-    width: 600px;
-    /* Set consistent width and height to make it square */
-    height: 500px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    /* Maintain a standard aspect ratio */
 }
 
 .carousel {
@@ -310,7 +377,7 @@ header {
     top: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 0;
     display: flex;
     justify-content: center;
@@ -321,7 +388,6 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Ensure images cover the area without stretching */
 }
 
 .carousel-slide.active {
@@ -347,7 +413,6 @@ header {
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
-
 }
 
 .indicator {
@@ -373,59 +438,106 @@ header {
     opacity: 0.7;
 }
 
-
-@media (max-width: 768px) {
-    .about-us {
-        padding: 10px;
-        margin-top: -1px;
-    }
-
+/* Tablet Portrait and Landscape */
+@media (max-width: 1024px) {
     .section-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         width: 100%;
-        padding: 20% 20px;
+        padding: 5% 20px;
     }
 
-    .carousel {
-        width: 100%;
-        height: 100vw;
-        /* Maintain a square shape based on viewport width */
+    .carousel-wrapper {
+        max-width: 100%;
     }
 
     .carousel-container {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        height: 80vw;
-        /* Maintain a square shape based on viewport width */
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .carousel-slide img {
+        height: auto;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .about-us {
+        padding: 20px 10px;
+    }
+
+    .section-container {
+        padding: 5% 20px;
+    }
+
+    .carousel-container {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .carousel-slide img {
+        height: auto;
     }
 
     .overview-text {
         text-align: center;
-        padding-top: 40px;
+        padding-top: 20px;
+    }
+
+    .overview-text h2 {
+        font-size: 1.8em;
+    }
+
+    .overview-text h3 {
+        font-size: 1.2em;
+    }
+
+    .overview-text p {
+        font-size: 0.9em;
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile Portrait */
+@media (max-width: 480px) and (orientation: portrait) {
     .about-us {
-        margin-top: -1px;
+        padding: 10px;
     }
 
-    .carousel {
-        height: 100vw;
-        /* Maintain a square shape based on viewport width */
+    .section-container {
+        padding: 10% 10px;
     }
 
     .carousel-container {
-        height: 80vw;
+        height: auto;
         aspect-ratio: 1 / 1;
-        /* Maintain a square shape based on viewport width */
+    }
+
+    .carousel-slide img {
+        height: auto;
     }
 
     .carousel-arrow {
         padding: 5px;
     }
+
+    .overview-text h2 {
+        font-size: 1.5em;
+    }
+
+    .overview-text h3 {
+        font-size: 1em;
+    }
+
+    .overview-text p {
+        font-size: 0.8em;
+    }
 }
+
+
+
+
+
 
 
 #services {
@@ -433,7 +545,6 @@ header {
     padding: 60px 20px;
     text-align: center;
     overflow: hidden;
-    /* Hide overflow to prevent scrollbar */
     position: relative;
 }
 
@@ -443,6 +554,16 @@ header {
     color: #ccc;
 }
 
+.overview-text h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.overview-text p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
 
 .swiper-container {
     width: 100%;
@@ -466,9 +587,7 @@ header {
 .service-block img {
     width: 100%;
     height: 320px;
-    /* Make the image taller */
     object-fit: cover;
-    /* Ensure the image covers the block */
     border-radius: 10px;
 }
 
@@ -477,7 +596,6 @@ header {
     padding: 20px;
     text-align: left;
     width: 100%;
-    /* Ensure the description takes full width */
 }
 
 /* Hide arrows and indicators initially */
@@ -499,46 +617,89 @@ header {
 .swiper-button-next,
 .swiper-button-prev {
     color: #ddd;
-    /* Change arrow color to #ddd */
 }
 
 .swiper-pagination-bullet-active {
     background: #c19957;
-    /* Change pagination active color to #c19957 */
 }
 
-/* Ensure mobile responsiveness */
-@media (max-width: 768px) {
-    #services {
-        margin-top: -1px;
+/* Tablet Portrait and Landscape */
+@media (max-width: 1024px) {
+    #services .container {
+        padding: 0 10px;
     }
 
-    .swiper-slide {
-        width: 100%;
+    .overview-text h2 {
+        font-size: 1.8em;
+    }
+
+    .overview-text p {
+        font-size: 1em;
     }
 
     .service-block {
         width: 90%;
-        /* Adjust width to fit within the viewport */
     }
 
-    /* Disable arrows and pagination for mobile portrait view */
+    .swiper-container {
+        padding: 20px 0;
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .service-block {
+        width: 80%;
+    }
+
+    .swiper-container {
+        padding: 10px 0;
+    }
+
+    .overview-text h2 {
+        font-size: 1.5em;
+    }
+
+    .overview-text p {
+        font-size: 0.9em;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-pagination {
+        opacity: 1;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) and (orientation: portrait) {
+    #services {
+        padding: 30px 10px;
+    }
+
+    .swiper-container {
+        padding: 10px 0;
+    }
+
+    .service-block {
+        width: 100%;
+    }
+
+    .overview-text h2 {
+        font-size: 1.5em;
+    }
+
+    .overview-text p {
+        font-size: 0.9em;
+    }
+
     .swiper-button-next,
     .swiper-button-prev,
     .swiper-pagination {
         display: none;
     }
-
-    .swiper-button-next {
-        display: none;
-        visibility: hidden;
-    }
-
-    .swiper-button-prev {
-        display: none;
-        visibility: hidden;
-    }
 }
+
 
 
 
@@ -552,9 +713,18 @@ header {
 
 
 .why-choose-us {
-    padding: 40px 20px;
+    padding: 40px 0;
     background: linear-gradient(to bottom, #000 50%, #222 50%);
     color: #ccc;
+}
+
+.why-choose-us-wrapper {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
 }
 
 .why-choose-us h2,
@@ -572,220 +742,280 @@ header {
     margin-bottom: 20px;
 }
 
-.selling-points .grid-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.selling-points .grid-item{
-    flex: 1 1 calc(50% - 20px);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.selling-points .grid-item:hover,
-.our-values .box:hover {
-    transform: translateY(-10px);
-}
-
-.selling-points .card{
+.card-item {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+}
+
+.card {
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
-    height: 100%;
-    align-items: center;
-    gap: 10px;
+    max-width: 360px;
 }
 
-.selling-points .image-container{
-    height: 100%;
-    
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.selling-points .card img{
-   border-radius: 10px;
-    max-width: 200px;
-    height: 100%;
+.card img {
+    width: 100%;
+    height: 200px;
     object-fit: cover;
 }
 
-.selling-points .text-content{
-    flex: 1;
+.card-content {
+    padding: 20px;
 }
 
-.selling-points .text-content h4{
-    display: flex;
-    align-items: center;
-    font-size: 18px;
+.card-content h4 {
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
-.selling-points .text-content p,
-.our-values .text-content p {
+.card-content p {
     font-size: 16px;
     line-height: 1.5;
+    color: #bbb;
 }
 
-.selling-points .tick {
-    color: green;
-    margin-right: 10px;
-}
-
-@media (max-width: 768px) {
-
-    .selling-points .grid-container,
-    .our-values .box-container {
-        flex-direction: column;
-    }
-
-    .selling-points .grid-item,
-    .our-values .box {
-        flex: 1 1 100%;
-    }
-
-    .selling-points .card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .selling-points .card img {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .selling-points .text-content,
-    .our-values .text-content {
-        text-align: center;
-    }
-
-    .selling-points .text-content h4{
-        justify-content: center;
-    }
-}
-
-
-/* Our Values Section */
-.our-values h3{
-    margin-top: 50px;
-}
-.values-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    margin-top: 50px;
+/* Values Section */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
     max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .value-box {
-    flex: 1 1 calc(50% - 20px); /* Each box takes 50% width with some gap */
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    margin: 50px auto 0;
+}
 
-  .value-box .text-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.value-item {
+    text-align: center;
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.value-item .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.value-content h4 {
     font-size: 18px;
     margin-bottom: 10px;
-  }
-  
-  .value-box:last-child {
-    margin-bottom: 0; /* Remove margin bottom for last box */
-  }
-  
-  .value-box .icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .value-box h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .value-box p {
-    font-size: 1em;
+}
+
+.value-content p {
+    font-size: 16px;
     line-height: 1.5;
-    color: #666;
-  }
-  
-  /* Responsive Styling */
-  
-  /* Mobile Portrait View */
-  @media (max-width: 480px) {
-    .values-container {
-      flex-direction: column; /* Display boxes in a column */
-      align-items: center; /* Center-align items */
+    color: #bbb;
+}
+
+/* Responsive Styling */
+
+/* Mobile Portrait and Landscape View */
+@media (max-width: 768px) {
+    .why-choose-us {
+        padding: 20px 10px;
     }
-  
-    .value-box {
-      width: 100%; /* Full width */
-      max-width: none; /* Remove max-width */
+
+    .card-content {
+        padding: 15px;
     }
-  }
-  
-  /* Tablet Portrait and Landscape View */
-  @media (min-width: 481px) and (max-width: 768px) {
-    .values-container {
-      flex-direction: row;
-      flex-wrap: wrap;
+
+    .card-content h4 {
+        font-size: 18px;
     }
-  
-    .value-box {
-      flex: 1 1 calc(50% - 20px);
-      max-width: calc(50% - 20px);
+
+    .card-content p,
+    .value-content p {
+        font-size: 14px;
     }
-  }
-  
+
+    .values-grid {
+        gap: 15px;
+    }
+
+    .value-item {
+        padding: 15px;
+    }
+
+    .value-content h4 {
+        font-size: 16px;
+    }
+}
+
+/* Tablet Portrait and Landscape View */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .why-choose-us {
+        padding: 30px 15px;
+    }
+
+    .card-content {
+        padding: 18px;
+    }
+
+    .card-content h4 {
+        font-size: 19px;
+    }
+
+    .card-content p,
+    .value-content p {
+        font-size: 15px;
+    }
+
+    .values-grid {
+        gap: 18px;
+    }
+
+    .value-item {
+        padding: 18px;
+    }
+
+    .value-content h4 {
+        font-size: 17px;
+    }
+}
 
 
-  section.testimonials {
-    background-color: #222;
+
+
+
+
+
+
+.testimonials {
     padding: 40px 20px;
+    background-color: #222;
+    color: #ccc;
     text-align: center;
 }
 
-section.testimonials h2 {
-    color: #333;
+.testimonials h2 {
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
-.testimonial-container {
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.testimonial {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.testimonial p {
-    color: #555;
+.quote {
+    font-size: 18px;
     font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.reviewer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviewer-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     margin-bottom: 10px;
 }
 
-.testimonial h4 {
+.reviewer-name {
+    font-size: 16px;
     color: #333;
-    font-weight: normal;
 }
+
+/* Responsive Styling */
+
+/* Mobile Portrait and Landscape View */
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 20px 10px;
+    }
+
+    .testimonial-card {
+        padding: 15px;
+    }
+
+    .quote {
+        font-size: 16px;
+    }
+
+    .reviewer-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .reviewer-name {
+        font-size: 14px;
+    }
+}
+
+/* Tablet Portrait and Landscape View */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .testimonials {
+        padding: 30px 15px;
+    }
+
+    .testimonial-card {
+        padding: 18px;
+    }
+
+    .quote {
+        font-size: 17px;
+    }
+
+    .reviewer-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .reviewer-name {
+        font-size: 15px;
+    }
+}
+
 
 
 
@@ -843,7 +1073,8 @@ section.contact-us h2 {
     gap: 15px;
 }
 
-#contact-form input, #contact-form textarea {
+#contact-form input,
+#contact-form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -864,5 +1095,3 @@ section.contact-us h2 {
 #contact-form button:hover {
     background-color: #004494;
 }
-
-
