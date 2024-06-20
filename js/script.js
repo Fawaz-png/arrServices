@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Necessary JavaScript changes for the carousel
+
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
     const carousel = document.querySelector('.carousel');
     let currentIndex = 0;
-    let startX, endX;
     let autoSlideInterval;
 
     const showSlide = (index) => {
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         goToPrevSlide();
         resetAutoSlide();
     });
+
     document.getElementById('right-arrow').addEventListener('click', () => {
         goToNextSlide();
         resetAutoSlide();
@@ -57,28 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAutoSlide();
         });
     });
-
-    const handleTouchStart = (event) => {
-        startX = event.touches[0].clientX;
-    };
-
-    const handleTouchMove = (event) => {
-        endX = event.touches[0].clientX;
-    };
-
-    const handleTouchEnd = () => {
-        if (startX > endX + 50) {
-            goToNextSlide();
-            resetAutoSlide();
-        } else if (startX < endX - 50) {
-            goToPrevSlide();
-            resetAutoSlide();
-        }
-    };
-
-    carousel.addEventListener('touchstart', handleTouchStart);
-    carousel.addEventListener('touchmove', handleTouchMove);
-    carousel.addEventListener('touchend', handleTouchEnd);
 
     // Auto slide show functionality
     const startAutoSlide = () => {
@@ -101,11 +81,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const aboutSection = document.querySelector('.about-us');
+
+    const observerOptions = {
+        threshold: 0.1 // Adjust the threshold as needed
+    };
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                aboutSection.classList.add('fade-in');
+            } else {
+                aboutSection.classList.remove('fade-in');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    observer.observe(aboutSection);
+});
+
+
+
+
 
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Swiper
     function initializeSwiper() {
         var swiperOptions = {
             loop: true,
@@ -193,6 +198,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Swiper on DOMContentLoaded
     initializeSwiper();
+});
+
+// IntersectionObserver for fade-in effect
+document.addEventListener('DOMContentLoaded', function () {
+    const fadeContents = document.querySelectorAll('.fade-content');
+
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            } else {
+                entry.target.classList.remove('fade-in');
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    fadeContents.forEach(content => {
+        observer.observe(content);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('.hero-image');
+    let currentIndex = 0;
+
+    function nextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+
+    setInterval(nextImage, 3000); // Change image every 5 seconds
 });
 
 
