@@ -228,6 +228,87 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    var testimonialSwiper = new Swiper('.testimonials-swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        spaceBetween: 30,
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+            },
+        },
+    });
+});
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const spotlightItems = document.querySelectorAll('.spotlight__item');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1 // Adjust as needed
+    });
+
+    spotlightItems.forEach(item => {
+        observer.observe(item);
+    });
+
+    spotlightItems.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            const overlay = item.querySelector('.overlay');
+            overlay.style.opacity = 1;
+        });
+
+        item.addEventListener('mouseout', () => {
+            const overlay = item.querySelector('.overlay');
+            overlay.style.opacity = 0;
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,119 +4,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seamless Image Slideshow</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Case Study/Portfolio Section</title>
+    <link href='//fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <style>
+        * {
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-size: 20vmin;
+        }
+
+        .collage--spotlight {
+            height: 100vh;
+            border-top: .125rem solid #fff;
+            border-left: .125rem solid #fff;
+            position: relative;
+        }
+
+        .spotlight__item {
+            position: absolute;
+            cursor: pointer;
+            border-right: .125rem solid #fff;
+            border-bottom: .125rem solid #fff;
+            transition:
+                top .5s,
+                left .5s,
+                z-index .5s,
+                height .5s,
+                width .5s,
+                background .2s;
+        }
+
+        .spotlight__item.item--active {
+            top: 0;
+            left: 0;
+            z-index: 20;
+            height: 100%;
+            width: 100%;
+        }
+
+        .spotlight__item:nth-of-type(1) {
+            top: 0;
+            left: 0;
+            height: 66.66%;
+            width: 33.33%;
+            background: #317794;
+        }
+
+        .spotlight__item:nth-of-type(2) {
+            top: 66.66%;
+            left: 0;
+            height: 33.33%;
+            width: 33.33%;
+            background: #5ec1c9;
+        }
+
+        .spotlight__item:nth-of-type(3) {
+            top: 0;
+            left: 33.33%;
+            height: 33.33%;
+            width: 66.66%;
+            background: #db92ba;
+        }
+
+        .spotlight__item:nth-of-type(4) {
+            top: 33.33%;
+            left: 33.33%;
+            height: 66.66%;
+            width: 33.33%;
+            background: #521b48;
+        }
+
+        .spotlight__item:nth-of-type(5) {
+            top: 33.33%;
+            left: 66.66%;
+            height: 33.33%;
+            width: 33.33%;
+            background: #9e3550;
+        }
+
+        .spotlight__item:nth-of-type(6) {
+            top: 66.66%;
+            left: 66.66%;
+            height: 33.33%;
+            width: 33.33%;
+            background: #8676d1;
+        }
+
+        .spotlight__item:before {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translate(0, -50%);
+            color: #fff;
+            content: attr(data-number);
+        }
+    </style>
 </head>
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        overflow: hidden;
-        /* Prevents scrollbar appearance */
-    }
-
-    .slideshow-container {
-        position: relative;
-        max-width: 100%;
-        height: 100vh;
-        /* Full viewport height */
-        margin: auto;
-        overflow: hidden;
-    }
-
-    .slide {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 1.5s ease-in-out;
-    }
-
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Ensures the image covers the container */
-        animation: zoom 18s infinite;
-    }
-
-    @keyframes zoom {
-        0% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(1.1);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    .text {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #f2f2f2;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-        opacity: 0;
-        animation: fadeInUp 1.5s forwards;
-        animation-delay: 1s;
-        /* Delays the text animation slightly */
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .active {
-        opacity: 1;
-        z-index: 1;
-    }
-</style>
 
 <body>
-    <div class="slideshow-container">
-        <div class="slide active">
-            <img src="images/freepik-export-20240615150546asuj.jpeg" class="zoom">
-            <div class="text">Heading 1</div>
-        </div>
-        <div class="slide">
-            <img src="images/pexels-trksami-20532119.jpg" class="zoom">
-            <div class="text">Heading 2</div>
-        </div>
-        <div class="slide">
-            <img src="images/hero-mobile.jpeg" class="zoom">
-            <div class="text">Heading 3</div>
-        </div>
-    </div>
+    <section class="collage--spotlight">
+        <div class="spotlight__item" data-number="1"></div>
+        <div class="spotlight__item" data-number="2"></div>
+        <div class="spotlight__item" data-number="3"></div>
+        <div class="spotlight__item" data-number="4"></div>
+        <div class="spotlight__item" data-number="5"></div>
+        <div class="spotlight__item" data-number="6"></div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let slides = document.getElementsByClassName("slide");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            slides[slideIndex - 1].classList.add("active");
-            setTimeout(showSlides, 3000); // Change image every 6 seconds
-        }
-
+        $('.spotlight__item').click(function () {
+            $(this).toggleClass('item--active');
+        });
     </script>
 </body>
 
