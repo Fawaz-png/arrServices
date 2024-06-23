@@ -4,53 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Header</title>
-    <!-- Import Raleway font from Google Fonts -->
+    <meta name="description"
+        content="Professional event security services ensuring safety and peace of mind for all your events.">
+    <meta name="keywords"
+        content="event security, security services, crowd management, VIP protection, risk assessment">
+    <meta name="author" content="Your Company Name">
+    <title>Arr Services - Event Security Company</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN for icons -->
-    <link rel="stylesheet" href="../font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <header>
-        <div class="logo">Company Logo</div>
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#about-us">About</a>
-            <a href="#services">Services</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Blog</a>
-            <a href="#contact" class="desktop-only">Contact</a>
-        </nav>
-        <button class="cta desktop-only">Contact</button>
-        <div class="hamburger-menu" id="hamburger-menu">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+        <div class="logo-container">
+            <img src="images/logo.svg" alt="ARR Services Logo" class="logo">
         </div>
-    </header>
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="close-btn" id="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#about-us">About</a>
+        <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+            <a href="#" class="active">Home</a>
+            <a href="#about-us">About Us</a>
             <a href="#services">Services</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Blog</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
+        </nav>
+        <button class="cta desktop-only">Get a Free Quote</button>
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-btn" id="close-btn" aria-label="Close menu">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <nav role="navigation" aria-label="Mobile Navigation">
+            <a href="#">Home</a>
+            <a href="#about-us">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+            <button class="cta">Get a Free Quote</button>
         </nav>
     </div>
 
-    <section class="hero">
+
+    <section class="hero" id="hero">
         <div class="slideshow">
-            <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Security guard Image 1"
-                class="hero-image active">
-            <img src="images/pexels-trksami-20532119.jpg" alt="Security guard Image 2" class="hero-image">
-            <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Security guard Image 3" class="hero-image">
+            <picture>
+                <source srcset="images//freepik-export-20240615150546asuj.jpeg" type="image/webp">
+                <source srcset="images/freepik-export-20240615150546asuj.jpeg" type="image/jpeg">
+                <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Security guard providing event security"
+                    class="hero-image active">
+            </picture>
+            <picture>
+                <source srcset="images/pexels-trksami-20532119.jpg" type="image/webp">
+                <source srcset="images/pexels-trksami-20532119.jpg" type="image/jpeg">
+                <img src="images/pexels-trksami-20532119.jpg" alt="Security team at an outdoor event"
+                    class="hero-image">
+            </picture>
+            <picture>
+                <source srcset="images/freepik-export-20240615150546asuj.jpeg" type="image/webp">
+                <source srcset="images/freepik-export-20240615150546asuj.jpeg" type="image/jpeg">
+                <img src="images/freepik-export-20240615150546asuj.jpeg"
+                    alt="Security personnel monitoring event premises" class="hero-image">
+            </picture>
         </div>
         <div class="hero-text">
-            <h1>Arr services</h1>
-            <h2>Trustworthy Protection for Every Event</h2>
-            <button class="cta">Get Started</button>
+            <h1 class="hero-title">ARR Services</h1>
+            <h2 class="hero-subtitle">Secure Your Event, Ensure Peace of Mind</h2>
+            <button class="cta">Get Your Free Quote</button>
         </div>
     </section>
 
@@ -59,18 +85,40 @@
 
     <section class="about-us" id="about-us">
         <div class="section-container">
+            <div class="overview-text">
+                <h2>Who We Are</h2>
+                <p>
+                    ARR Services is your dedicated partner in comprehensive event security. We specialize in
+                    safeguarding a wide range of events, from intimate gatherings to large-scale festivals. Our mission
+                    is to create secure environments where you can focus on enjoying your event without worry.
+                </p>
+                <p>
+                    With a team of seasoned security professionals, we tailor our services to meet your unique needs.
+                    Our expertise spans crowd management, access control, risk assessment, emergency response planning,
+                    and more.
+                </p>
+                <p>
+                    We believe in the power of trust, professionalism, and personalized attention. When you choose ARR
+                    Services, you're choosing peace of mind, knowing that your event is in capable hands. Experience the
+                    difference of working with a security partner who truly cares about your success.
+                </p>
+                <button class="cta">Learn More About Us</button>
+            </div>
             <div class="carousel-wrapper">
-                <div class="carousel-arrow left" id="left-arrow">&#9664;</div>
+                <button class="carousel-arrow left" id="left-arrow">&#9664;</button>
                 <div class="carousel-container">
                     <div class="carousel">
                         <div class="carousel-slide active">
-                            <img src="images/pexels-trksami-20532119.jpg" alt="Slide 1">
+                            <img src="images/freepik-export-20240615150546asuj.jpeg"
+                                alt="Team of security professionals in uniform">
                         </div>
                         <div class="carousel-slide">
-                            <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Slide 2">
+                            <img src="images/pexels-trksami-20532119.jpg"
+                                alt="Security officer monitoring surveillance footage">
                         </div>
                         <div class="carousel-slide">
-                            <img src="images/pexels-trksami-20532119.jpg" alt="Slide 3">
+                            <img src="images/freepik-export-20240615150546asuj.jpeg"
+                                alt="Security team conducting a risk assessment">
                         </div>
                     </div>
                     <div class="carousel-indicators">
@@ -79,35 +127,10 @@
                         <span class="indicator" data-slide="2"></span>
                     </div>
                 </div>
-                <div class="carousel-arrow right" id="right-arrow">&#9654;</div>
-            </div>
-            <div class="overview-text">
-                <h2>Who We Are</h2>
-                <h3>A Brief Introduction</h3>
-                <p>Welcome to ARR Services, your trusted partner in comprehensive event security. Our core focus is
-                    ensuring the safety and success of your events, from concerts and corporate gatherings to private
-                    parties and public festivals.
-
-                    <br>
-                    <br>
-
-                    With a team of highly trained security professionals, we deliver tailored solutions for each event's
-                    unique challenges. Our services include crowd management, access control, risk assessment, and
-                    emergency response planning.
-
-                    <br>
-                    <br>
-
-                    At ARR Services, we pride ourselves on our integrity, professionalism, and personal touch. We build
-                    lasting relationships with our clients by consistently exceeding expectations. Choose ARR Services
-                    for a seamless, worry-free event experience where safety and excellence are at the heart of
-                    everything we do.
-                </p>
-                <button class="discover-more-btn">Discover More</button>
+                <button class="carousel-arrow right" id="right-arrow">&#9654;</button>
             </div>
         </div>
     </section>
-
 
 
 
@@ -120,7 +143,7 @@
                     unique needs of each event.</p>
                 <p>Our core services include:</p>
             </div>
-            <div class="swiper-container fade-content">
+            <div class="swiper-container services-swiper fade-content">
                 <div class="swiper-wrapper">
                     <!-- Service Slide 1 -->
                     <div class="swiper-slide">
@@ -185,165 +208,250 @@
         </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <section id="why-choose-us">
         <div class="container">
             <div class="overview-text fade-content">
-                <h2>Why Choose Us</h2>
-                <p>Discover the key reasons why ARR Services is the right choice for your event security needs.</p>
+                <h2>Why Choose ARR Services?</h2>
+                <p>Discover the pillars of trust that set us apart in the event security industry.</p>
             </div>
-
-            <div class="selling-point fade-content">
-                <h3>Our Selling Point</h3>
-                <div class="selling-point-content">
-                    <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Selling Point">
-                    <p>With a team of highly trained professionals and a commitment to excellence, we ensure the highest
-                        level of security and peace of mind for your events.</p>
+            <div class="pillars-container fade-content">
+                <div class="pillar" data-modal-target="integrity-modal">
+                    <i class="pillar-icon fas fa-handshake"></i>
+                    <h3>Integrity</h3>
                 </div>
-            </div>
-
-            <div class="values fade-content">
-                <h3>Our Values</h3>
-                <div class="value-list">
-                    <div class="value-item">
-                        <img src="images/pexels-trksami-20532119.jpg" alt="Integrity">
-                        <h4>Integrity</h4>
-                        <p>We uphold the highest standards of integrity in all our actions.</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Professionalism">
-                        <h4>Professionalism</h4>
-                        <p>Our team is composed of skilled and experienced professionals dedicated to maintaining a safe
-                            and secure environment.</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/pexels-trksami-20532119.jpg" alt="Reliability">
-                        <h4>Reliability</h4>
-                        <p>We are always ready to respond swiftly and efficiently to any situation, ensuring the
-                            security of your event at all times.</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/freepik-export-20240615150546asuj.jpeg" alt="Customer Focus">
-                        <h4>Customer Focus</h4>
-                        <p>Your satisfaction is our priority. We tailor our services to meet your specific needs and
-                            expectations.</p>
-                    </div>
+                <div class="pillar" data-modal-target="experience-modal">
+                    <i class="pillar-icon fas fa-user-shield"></i>
+                    <h3>Experience</h3>
+                </div>
+                <div class="pillar" data-modal-target="client-focus-modal">
+                    <i class="pillar-icon fas fa-users"></i>
+                    <h3>Client Focus</h3>
+                </div>
+                <div class="pillar" data-modal-target="results-modal">
+                    <i class="pillar-icon fas fa-check-circle"></i>
+                    <h3>Proven Results</h3>
                 </div>
             </div>
         </div>
+
+        <div id="integrity-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('integrity-modal')">&times;</span>
+                <h2>Integrity</h2>
+                <p>We uphold the highest standards of ethical conduct in every interaction, ensuring transparency,
+                    honesty, and fairness in all our dealings.</p>
+            </div>
+        </div>
+
+        <div id="experience-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('experience-modal')">&times;</span>
+                <h2>Experience</h2>
+                <p>Our seasoned professionals bring decades of experience to safeguard your events. We've handled a wide
+                    range of events, from intimate gatherings to large-scale festivals, and our expertise ensures that
+                    your event runs smoothly and securely.</p>
+            </div>
+        </div>
+
+        <div id="client-focus-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('client-focus-modal')">&times;</span>
+                <h2>Client Focus</h2>
+                <p>Your satisfaction is our top priority. We take the time to understand your unique needs and tailor
+                    our security solutions accordingly. Our goal is to exceed your expectations and provide a truly
+                    personalized experience.</p>
+            </div>
+        </div>
+
+        <div id="results-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('results-modal')">&times;</span>
+                <h2>Proven Results</h2>
+                <p>Our track record speaks for itself. We have a history of providing exceptional security services for
+                    a wide range of events, ensuring their safety and success. We're confident in our ability to deliver
+                    the same high level of service for your next event.</p>
+            </div>
+        </div>
     </section>
-
-
-
-
 
     <section id="testimonials">
         <div class="container">
-            <div class="section-header fade-content">
+            <div class="overview-text fade-content">
                 <h2>What Our Clients Say</h2>
-                <p>Read what our satisfied clients have to say about our services and the events we helped them host.
-                </p>
+                <p>Don't just take our word for it. See what our satisfied clients have to say about our exceptional
+                    services.</p>
             </div>
             <div class="swiper-container testimonials-swiper fade-content">
                 <div class="swiper-wrapper">
-                    <!-- Testimonial 1 -->
+
                     <div class="swiper-slide testimonial">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">“</div>
-                            <p class="testimonial-text">ARR Services ensured our event was a huge success. Their team
-                                was professional, efficient, and very reassuring.</p>
-                            <div class="client-info">
-                                <span class="client-name">John Doe</span>
-                                <span class="client-event">Music Concert</span>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <img src="images/client1.jpg" alt="Client 1 Photo" class="client-photo">
+                                <div class="client-details">
+                                    <p class="client-name">John Doe</p>
+                                    <p class="client-event">Music Concert</p>
+                                </div>
                             </div>
-                            <div class="rating">★★★★★</div>
+                            <div class="testimonial-body">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">ARR Services ensured our event was a huge success. Their
+                                    team was professional, efficient, and very reassuring.</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="rating">★★★★★</div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Testimonial 2 -->
+
                     <div class="swiper-slide testimonial">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">“</div>
-                            <p class="testimonial-text">We were extremely happy with the security measures at our
-                                corporate event. ARR Services is highly recommended.</p>
-                            <div class="client-info">
-                                <span class="client-name">Jane Smith</span>
-                                <span class="client-event">Corporate Event</span>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <img src="images/client2.jpg" alt="Client 2 Photo" class="client-photo">
+                                <div class="client-details">
+                                    <p class="client-name">Jane Smith</p>
+                                    <p class="client-event">Corporate Event</p>
+                                </div>
                             </div>
-                            <div class="rating">★★★★★</div>
+                            <div class="testimonial-body">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">We were extremely happy with the security measures at our
+                                    corporate event. ARR Services is highly recommended.</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="rating">★★★★★</div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Testimonial 3 -->
+
                     <div class="swiper-slide testimonial">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">“</div>
-                            <p class="testimonial-text">Their crowd management skills were top-notch. We felt safe and
-                                secure throughout our festival.</p>
-                            <div class="client-info">
-                                <span class="client-name">Emily Johnson</span>
-                                <span class="client-event">Festival</span>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <img src="images/client3.jpg" alt="Client 3 Photo" class="client-photo">
+                                <div class="client-details">
+                                    <p class="client-name">Emily Johnson</p>
+                                    <p class="client-event">Festival</p>
+                                </div>
                             </div>
-                            <div class="rating">★★★★★</div>
+                            <div class="testimonial-body">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">Their crowd management skills were top-notch. We felt safe
+                                    and secure throughout our festival.</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="rating">★★★★★</div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Testimonial 4 -->
+
                     <div class="swiper-slide testimonial">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">“</div>
-                            <p class="testimonial-text">I can’t thank ARR Services enough for their dedication and hard
-                                work at our wedding. Truly outstanding service.</p>
-                            <div class="client-info">
-                                <span class="client-name">Michael Brown</span>
-                                <span class="client-event">Wedding</span>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <img src="images/client4.jpg" alt="Client 4 Photo" class="client-photo">
+                                <div class="client-details">
+                                    <p class="client-name">Michael Brown</p>
+                                    <p class="client-event">Wedding</p>
+                                </div>
                             </div>
-                            <div class="rating">★★★★★</div>
+                            <div class="testimonial-body">
+                                <div class="quote-icon">“</div>
+                                <p class="testimonial-text">I can’t thank ARR Services enough for their dedication and
+                                    hard work at our wedding. Truly outstanding service.</p>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="rating">★★★★★</div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
+
+
+
+
+
+
 
 
 
     <section class="portfolio" id="portfolio">
-        <div class="section-container">
-            <div class="section-header"><h2>Our Work</h2></div>
-            <div class="collage--spotlight">
-                <div class="spotlight__item animate" data-description="Image 1 Description">
-                    <img src="images/pexels-trksami-20532119.jpg" alt="Image 1">
-                    <div class="overlay">Image 1 Description</div>
+        <div class="container">
+            <div class="section-header fade-content">
+                <h2>Our Work</h2>
+                <p>Showcase of successful events we've secured, highlighting our diverse expertise and commitment to
+                    excellence.</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item"
+                    data-description="Music Festival Security: Ensuring the safety of thousands of attendees at a vibrant outdoor music festival.">
+                    <img src="images/event1.jpg" alt="Music Festival Security" loading="lazy">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Music Festival Security</h3>
+                            <p>Ensuring the safety of thousands of attendees at a vibrant outdoor music festival.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="spotlight__item animate" data-description="Video 1 Description">
-                    <video src="videos/video1.mp4" controls></video>
-                    <div class="overlay">Video 1 Description</div>
+                <div class="gallery-item"
+                    data-description="Corporate Conference Protection: Providing discreet security for a high-profile corporate conference with VIP attendees.">
+                    <video src="videos/video1.mp4" controls muted></video>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Corporate Conference Protection</h3>
+                            <p>Providing discreet security for a high-profile corporate conference with VIP attendees.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="spotlight__item animate" data-description="Image 2 Description">
-                    <img src="images/pexels-trksami-20532119.jpg" alt="Image 2">
-                    <div class="overlay">Image 2 Description</div>
+                <div class="gallery-item"
+                    data-description="Stadium Crowd Management: Efficiently managing crowd flow and ensuring safety at a packed sporting event in a large stadium.">
+                    <img src="images/event3.jpg" alt="Stadium Crowd Management" loading="lazy">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Stadium Crowd Management</h3>
+                            <p>Efficiently managing crowd flow and ensuring safety at a packed sporting event in a large
+                                stadium.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="spotlight__item animate" data-description="Video 2 Description">
-                    <video src="videos/video2.mp4" controls></video>
-                    <div class="overlay">Video 2 Description</div>
+                <div class="gallery-item"
+                    data-description="Private Party Security: Providing personalized security for a private VIP party, ensuring the discretion and safety of guests.">
+                    <img src="images/event4.jpg" alt="Private Party Security" loading="lazy">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Private Party Security</h3>
+                            <p>Providing personalized security for a private VIP party, ensuring the discretion and
+                                safety of guests.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="spotlight__item animate" data-description="Image 3 Description">
-                    <img src="images/pexels-trksami-20532119.jpg" alt="Image 3">
-                    <div class="overlay">Image 3 Description</div>
+                <div class="gallery-item"
+                    data-description="Trade Show Security: Safeguarding exhibitors and attendees at a large international trade show, preventing theft and ensuring a smooth experience.">
+                    <img src="images/event5.jpg" alt="Trade Show Security" loading="lazy">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Trade Show Security</h3>
+                            <p>Safeguarding exhibitors and attendees at a large international trade show, preventing
+                                theft and ensuring a smooth experience.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="spotlight__item animate" data-description="Image 4 Description">
-                    <img src="images/pexels-trksami-20532119.jpg" alt="Image 4">
-                    <div class="overlay">Image 4 Description</div>
+                <div class="gallery-item"
+                    data-description="Charity Gala Security: Ensuring the safety and security of guests and high-value items at a prestigious charity gala.">
+                    <video src="videos/video2.mp4" controls muted></video>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h3>Charity Gala Security</h3>
+                            <p>Ensuring the safety and security of guests and high-value items at a prestigious charity
+                                gala.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -372,24 +480,101 @@
 
 
 
-    <section id="location" class="location">
-        <h2>Our Location</h2>
-        <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345096566!2d144.95373531550446!3d-37.816279742021655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577697c7d07a48b!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1615242742981!5m2!1sen!2sau"
-                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    <section id="contact-us">
+        <div class="container">
+            <div class="overview-text">
+                <h2>Get in Touch</h2>
+                <p>Ready to secure your next event? Contact us today for a free consultation and quote.</p>
+            </div>
+            <div class="contact-content">
+                <div class="map-container" id="map"></div>
+                <div class="form-container">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="cta">Send</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@arrservices.com">info@arrservices.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+1234567890">+123 456 7890</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>29 Swanscombe Street, Swanscombe, England, DA10 0BQ</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact-us" class="contact-us">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+
+
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>
+                        ARR Services provides comprehensive event security services to ensure the safety and success of
+                        your events.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about-us">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact-us">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@arrservices.com">info@arrservices.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+1234567890">+123 456 7890</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>29 Swanscombe Street, Swanscombe, England, DA10 0BQ</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ARR Services. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 
 
@@ -403,15 +588,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <button id="scrollUpBtn" class="scroll-up-btn">↑</button>
 
 
 
     <script src="js/script.js" type="module"></script>
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
 </body>
 
 </html>

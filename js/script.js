@@ -1,109 +1,138 @@
+//Navbar Functionality
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('hamburger-menu').addEventListener('click', () => {
-        document.getElementById('mobile-menu').style.display = 'block';
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('close-btn');
+    const menuLinks = document.querySelectorAll('.mobile-menu nav a');
+
+    const toggleMenu = () => {
+        mobileMenu.classList.toggle('show');
+        if (mobileMenu.classList.contains('show')) {
+            setTimeout(() => {
+                mobileMenu.style.overflowY = 'auto';
+            }, 300); // Match the transition duration
+        } else {
+            mobileMenu.style.overflowY = 'hidden';
+        }
+    };
+
+    hamburgerMenu.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking on a menu item
+    menuLinks.forEach(link => {
+        link.addEventListener('click', toggleMenu);
     });
 
-    document.getElementById('close-btn').addEventListener('click', () => {
-        document.getElementById('mobile-menu').style.display = 'none';
-    });
+    // Close mobile menu when clicking *inside* it, but not on links or the close button
+    mobileMenu.addEventListener('click', (event) => {
+        const target = event.target;
+        const isLink = target.tagName === 'A';
+        const isCloseBtn = target.classList.contains('close-btn');
 
+        if (mobileMenu.classList.contains('show') && !isLink && !isCloseBtn) {
+            toggleMenu();
+        }
+    });
 });
 
 
-// Necessary JavaScript changes for the carousel
 
-document.addEventListener('DOMContentLoaded', () => {
+//Hero Slideshow
+document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('.hero-image');
+    let currentIndex = 0;
+    let interval;
+
+    function nextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+
+    interval = setInterval(nextImage, 3000); // Start the slideshow
+
+    // Pause slideshow on hover
+    const slideshow = document.querySelector('.slideshow');
+    slideshow.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+    });
+
+    slideshow.addEventListener('mouseleave', () => {
+        interval = setInterval(nextImage, 3000); // Restart slideshow on mouseleave
+    });
+});
+
+
+//Carousel Functionality
+document.addEventListener("DOMContentLoaded", () => {
+    // Carousel Functionality
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
-    const carousel = document.querySelector('.carousel');
-    let currentIndex = 0;
+    let currentSlideIndex = 0;
     let autoSlideInterval;
 
-    const showSlide = (index) => {
+    function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.classList.remove('active');
             indicators[i].classList.remove('active');
-            slide.style.transform = `translateX(${(i - index) * 100}%)`;
+            slide.style.transform = `translateX(${(i - index) * 100}%)`; // Move the slides horizontally
             if (i === index) {
                 slide.classList.add('active');
                 indicators[i].classList.add('active');
             }
         });
-    };
+    }
 
-    const goToNextSlide = () => {
-        currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
-        showSlide(currentIndex);
-    };
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        showSlide(currentSlideIndex);
+    }
 
-    const goToPrevSlide = () => {
-        currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
-        showSlide(currentIndex);
-    };
+    function prevSlide() {
+        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+        showSlide(currentSlideIndex);
+    }
 
-    document.getElementById('left-arrow').addEventListener('click', () => {
-        goToPrevSlide();
-        resetAutoSlide();
-    });
-
-    document.getElementById('right-arrow').addEventListener('click', () => {
-        goToNextSlide();
-        resetAutoSlide();
-    });
+    document.getElementById('left-arrow').addEventListener('click', prevSlide);
+    document.getElementById('right-arrow').addEventListener('click', nextSlide);
 
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
-            showSlide(index);
-            currentIndex = index;
-            resetAutoSlide();
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+            resetAutoSlide(); // Reset auto-slide after manual interaction
         });
     });
 
-    // Auto slide show functionality
-    const startAutoSlide = () => {
-        autoSlideInterval = setInterval(goToNextSlide, 3000); // Change slides every 3 seconds
-    };
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
+    }
 
-    const resetAutoSlide = () => {
+    function resetAutoSlide() {
         clearInterval(autoSlideInterval);
         startAutoSlide();
-    };
+    }
 
-    startAutoSlide(); // Start the auto slide show initially
+    // Start auto-slide initially
+    startAutoSlide();
 
-    // Initial display of the first slide
-    showSlide(currentIndex);
+    // Initial display
+    showSlide(currentSlideIndex);
 
-    // Transition effect for slides
-    slides.forEach(slide => {
-        slide.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
+    // Fade-in Effect for the Section
     const aboutSection = document.querySelector('.about-us');
-
-    const observerOptions = {
-        threshold: 0.1 // Adjust the threshold as needed
-    };
-
-    const observerCallback = (entries) => {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                aboutSection.classList.add('fade-in');
-            } else {
-                aboutSection.classList.remove('fade-in');
+                entry.target.classList.add("fade-in");
             }
         });
-    };
+    });
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
     observer.observe(aboutSection);
 });
-
-
-
 
 
 
@@ -158,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         }
 
-        var swiper = new Swiper('.swiper-container', swiperOptions);
+        var swiper = new Swiper('.services-swiper', swiperOptions);
 
         if (window.innerWidth <= 480) {
             let autoplayDelay = swiperOptions.autoplay.delay;
@@ -227,172 +256,308 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
-    var testimonialSwiper = new Swiper('.testimonials-swiper', {
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
-        },
-        slidesPerView: 1,
-        spaceBetween: 30,
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 50,
-            },
-        },
+    // Modal Functionality
+    const pillars = document.querySelectorAll('.pillar');
+    const modals = document.querySelectorAll('.modal');
+
+    pillars.forEach(pillar => {
+        pillar.addEventListener('click', () => {
+            const modalId = pillar.dataset.modalTarget;
+            openModal(modalId);
+        });
     });
-});
 
+    modals.forEach(modal => {
+        const closeBtn = modal.querySelector('.close-btn');
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
 
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const spotlightItems = document.querySelectorAll('.spotlight__item');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
         });
-    }, {
-        threshold: 0.1 // Adjust as needed
     });
 
-    spotlightItems.forEach(item => {
-        observer.observe(item);
-    });
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = 'block';
+    }
 
-    spotlightItems.forEach(item => {
-        item.addEventListener('mouseover', () => {
-            const overlay = item.querySelector('.overlay');
-            overlay.style.opacity = 1;
-        });
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = 'none';
+    }
 
-        item.addEventListener('mouseout', () => {
-            const overlay = item.querySelector('.overlay');
-            overlay.style.opacity = 0;
+    // Intersection Observer for Fade-In Effect
+    const fadeElements = document.querySelectorAll('.fade-content');
+
+    const observerOptions = {
+        threshold: 0.2
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('fade-in')) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
         });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    fadeElements.forEach(element => {
+        observer.observe(element);
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('.hero-image');
-    let currentIndex = 0;
+    const initializeSwiper = () => {
+        const swiperOptions = {
+            loop: true,
+            centeredSlides: true, // Center slides
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            slidesPerView: 3, // Show 3 slides at a time on large screens
+            spaceBetween: 30,
+            breakpoints: {
+                0: { // Mobile devices (portrait and landscape)
+                    slidesPerView: 1, // Show 1 slide at a time
+                    spaceBetween: 10, // Reduce space between slides
+                },
+                768: { // Tablets (portrait and landscape)
+                    slidesPerView: 2, // Show 2 slides at a time
+                    spaceBetween: 20,
+                },
+                1024: { // Larger screens
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+            touchStartPreventDefault: false, // Prevent default touch behavior
+            scrollbar: {
+                el: null,
+                hide: true,
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        };
 
-    function nextImage() {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add('active');
-    }
+        // Initialize Swiper
+        new Swiper('.testimonials-swiper', swiperOptions);
+    };
 
-    setInterval(nextImage, 3000); // Change image every 5 seconds
-});
+    // Initial Swiper setup
+    initializeSwiper();
 
+    // Re-initialize Swiper on window resize
+    window.addEventListener('resize', () => {
+        const existingSwiper = document.querySelector('.testimonials-swiper').swiper;
+        if (existingSwiper) {
+            existingSwiper.destroy(true, true);
+        }
+        initializeSwiper();
+    });
 
+    // Intersection Observer for fade-in effect
+    const fadeContents = document.querySelectorAll('.fade-content');
+    const observerOptions = {
+        threshold: 0.2,
+    };
 
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('fade-in')) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
 
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*document.addEventListener('DOMContentLoaded', function () {
-    const commentForm = document.getElementById('commentForm');
-    const commentsSection = document.getElementById('commentsSection');
-
-    commentForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('commentName').value;
-        const text = document.getElementById('commentText').value;
-
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-
-        const commentName = document.createElement('h4');
-        commentName.textContent = name;
-
-        const commentText = document.createElement('p');
-        commentText.textContent = text;
-
-        commentDiv.appendChild(commentName);
-        commentDiv.appendChild(commentText);
-
-        commentsSection.appendChild(commentDiv);
-
-        // Clear the form
-        commentForm.reset();
+    fadeContents.forEach(element => {
+        observer.observe(element);
     });
 });
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// JavaScript for the fade-in effect
+document.addEventListener('DOMContentLoaded', function () {
+    const fadeContents = document.querySelectorAll('.fade-content');
+
+    const observerOptions = {
+        threshold: 0.2
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('fade-in')) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    fadeContents.forEach(content => {
+        observer.observe(content);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZmF3YXpiZWxsbyIsImEiOiJjbHhxcnV4djQwbXVtMmtxd2dlaDM1ZnMyIn0.aOIVUyZLSwLMNN0QRZCyuQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v10', // Style URL
+    center: [0.3074, 51.4487], // Longitude, Latitude
+    zoom: 15
+});
+
+new mapboxgl.Marker()
+    .setLngLat([0.3074, 51.4487])
+    .addTo(map);
+
+
+
+// JavaScript for the contact form (example using EmailJS)
+
+// Replace with your EmailJS service ID and template ID
+emailjs.init("YOUR_PUBLIC_KEY");
+
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(function (response) {
+            alert('Message sent successfully!');
+            contactForm.reset(); // Clear the form fields
+        }, function (error) {
+            alert('Error sending message: ' + error);
+        });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Scroll to Top Button
+document.addEventListener('DOMContentLoaded', function () {
+    const scrollUpBtn = document.getElementById('scrollUpBtn');
+
+    // Show the button when scrolled down 100px
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            scrollUpBtn.classList.add('show');
+        } else {
+            scrollUpBtn.classList.remove('show');
+        }
+    });
+
+    // Scroll to the top when the button is clicked
+    scrollUpBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
 
 
 
