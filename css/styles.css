@@ -1408,6 +1408,16 @@ header {
     padding: 0 20px;
 }
 
+#contact-us .section-header h2 {
+    font-size: 3em;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#contact-us .section-header p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
 
 /* Contact Content */
 .contact-content {
