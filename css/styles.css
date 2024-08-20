@@ -103,22 +103,24 @@ body {
 }
 
 
+
 /* Header Section */
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+    padding: 10px 20px;
     background-color: var(--primary-color);
     color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
+    flex-wrap: wrap;
 }
 
 .logo-container {
-    max-width: 150px;
+    max-width: 120px;
 }
 
 .logo {
@@ -128,13 +130,14 @@ header {
 
 .nav-links {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin: 0 15px;
+    margin: 5px 10px;
     transition: color 0.3s ease;
 }
 
@@ -144,7 +147,7 @@ header {
 }
 
 .cta {
-    padding: 10px 20px;
+    padding: 8px 16px;
     background-color: var(--secondary-color);
     color: white;
     border: none;
@@ -152,8 +155,8 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: bold;
+    white-space: nowrap;
 }
-
 
 .cta:hover {
     background-color: var(--hover-color);
@@ -225,6 +228,21 @@ header {
     color: white;
 }
 
+@media (max-width: 1024px) {
+    .logo-container {
+        max-width: 100px;
+    }
+
+    .nav-links a {
+        margin: 5px;
+        font-size: 0.9em;
+    }
+
+    .cta {
+        padding: 6px 12px;
+    }
+}
+
 @media (max-width: 768px) {
 
     .nav-links,
@@ -235,7 +253,12 @@ header {
     .hamburger-menu {
         display: block;
     }
+
+    .logo-container {
+        max-width: 80px;
+    }
 }
+
 
 
 /* Hero Section */
@@ -1059,7 +1082,7 @@ header {
         font-size: 1.4em;
     }
 
-    .modal-content{
+    .modal-content {
         margin: 50% auto;
     }
 }
