@@ -1,5 +1,3 @@
-//Navbar Functionality
-
 document.addEventListener('DOMContentLoaded', () => {
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -7,14 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuLinks = document.querySelectorAll('.mobile-menu nav a');
 
     const toggleMenu = () => {
+        const isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
+        hamburgerMenu.setAttribute('aria-expanded', !isExpanded);
         mobileMenu.classList.toggle('show');
-        if (mobileMenu.classList.contains('show')) {
-            setTimeout(() => {
-                mobileMenu.style.overflowY = 'auto';
-            }, 300); // Match the transition duration
-        } else {
-            mobileMenu.style.overflowY = 'hidden';
-        }
+        mobileMenu.setAttribute('aria-hidden', isExpanded);
     };
 
     hamburgerMenu.addEventListener('click', toggleMenu);
@@ -39,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-//Hero Slideshow
+
+// Hero Slideshow
 document.addEventListener('DOMContentLoaded', function () {
     const images = document.querySelectorAll('.hero-image');
     let currentIndex = 0;
@@ -65,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//Carousel Functionality
+
+// Carousel Functionality
 document.addEventListener("DOMContentLoaded", () => {
-    // Carousel Functionality
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
     let currentSlideIndex = 0;
@@ -77,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         slides.forEach((slide, i) => {
             slide.classList.remove('active');
             indicators[i].classList.remove('active');
-            slide.style.transform = `translateX(${(i - index) * 100}%)`; // Move the slides horizontally
+            slide.style.transform = `translateX(${(i - index) * 100}%)`;
             if (i === index) {
                 slide.classList.add('active');
                 indicators[i].classList.add('active');
@@ -98,31 +93,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('left-arrow').addEventListener('click', prevSlide);
     document.getElementById('right-arrow').addEventListener('click', nextSlide);
 
-    indicators.forEach((indicator, index) => {
+    indicators.forEach((indicator, i) => {
         indicator.addEventListener('click', () => {
-            currentSlideIndex = index;
-            showSlide(currentSlideIndex);
-            resetAutoSlide(); // Reset auto-slide after manual interaction
+            currentSlideIndex = i;
+            showSlide(i);
         });
     });
 
+    // Auto-slide
     function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
+        autoSlideInterval = setInterval(nextSlide, 3000);
     }
 
-    function resetAutoSlide() {
+    function stopAutoSlide() {
         clearInterval(autoSlideInterval);
-        startAutoSlide();
     }
 
-    // Start auto-slide initially
+    document.querySelector('.carousel-wrapper').addEventListener('mouseenter', stopAutoSlide);
+    document.querySelector('.carousel-wrapper').addEventListener('mouseleave', startAutoSlide);
+
+    // Start auto-slide
     startAutoSlide();
 
     // Initial display
     showSlide(currentSlideIndex);
 
-    // Fade-in Effect for the Section
-    const aboutSection = document.querySelector('.about-us');
+    // Intersection Observer for Fade-in Effect
+    const aboutSection = document.querySelector('.overview-text');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -133,8 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(aboutSection);
 });
-
-
 
 
 
@@ -171,6 +166,10 @@ document.addEventListener('DOMContentLoaded', function () {
             scrollbar: {
                 el: null,
                 hide: true,
+            },
+            autoplay: {
+                delay: 1500,
+                disableOnInteraction: false,
             },
         };
 
@@ -227,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Swiper on DOMContentLoaded
     initializeSwiper();
+
 });
 
 // IntersectionObserver for fade-in effect
@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Disable Right-Click on Videos
 document.addEventListener('contextmenu', (e) => {
     if (e.target.tagName === 'VIDEO') {
-        e.preventDefault(); 
+        e.preventDefault();
     }
 });
 
