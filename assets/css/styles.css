@@ -10,41 +10,34 @@
     --padding-large: 50px;
 }
 
-
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-html,
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
-body {
     font-family: 'Raleway', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
 }
 
-/* Header Section */
-
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: var(--padding-small) var(--padding-medium);
     background-color: var(--primary-color);
     color: white;
     position: sticky;
@@ -71,7 +64,7 @@ header {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin: 5px 10px;
+    margin: var(--padding-small) var(--padding-medium);
     transition: color 0.3s ease;
 }
 
@@ -92,6 +85,11 @@ header {
     white-space: nowrap;
 }
 
+.cta a{
+    text-decoration: none;
+    color: white;
+}
+
 .cta:hover {
     background-color: var(--hover-color);
 }
@@ -105,7 +103,6 @@ header {
     color: white;
 }
 
-/* Mobile Menu Styles */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -114,7 +111,6 @@ header {
     height: 100%;
     background-color: var(--primary-color);
     z-index: 1001;
-    overflow-y: hidden;
     opacity: 0;
     transform: translateX(-100%);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -123,20 +119,23 @@ header {
 .mobile-menu.show {
     opacity: 1;
     transform: translateX(0);
-    overflow-y: auto;
 }
 
 .mobile-menu nav {
-    padding: 20px;
+    padding: var(--padding-medium);
 }
 
 .mobile-menu a {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 15px 0;
+    padding: var(--padding-medium) 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     transition: background-color 0.3s ease;
+}
+
+.mobile-menu a:first-child {
+    margin-top: 10%;
 }
 
 .mobile-menu a:hover {
@@ -145,13 +144,15 @@ header {
 
 .mobile-menu .cta {
     display: block;
-    margin-top: 20px;
+    margin-top: var(--padding-medium);
     width: 100%;
+    padding: 16px 32px;
+    ;
 }
 
 .close-btn {
     position: absolute;
-    top: 15px;
+    top: 30px;
     right: 15px;
     font-size: 2em;
     cursor: pointer;
@@ -191,16 +192,17 @@ header {
     }
 }
 
-
-
-
 /* Overview Text Styling (Global) */
 .overview-text {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: var(--padding-large);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease, transform 1s ease;
+    padding: var(--padding-medium);
+    max-width: 600px;
+    border-radius: 10px;
+    color: var(--text-color);
 }
 
 .overview-text.fade-in {
@@ -210,7 +212,7 @@ header {
 
 .overview-text h2 {
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: var(--padding-medium);
     color: var(--secondary-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -218,16 +220,13 @@ header {
 .overview-text p {
     font-size: 1.2em;
     line-height: 1.6;
-    padding: 0 10px;
-    /* Add padding for better readability on all screens */
+    padding: 0 var(--padding-small);
 }
 
 /* Mobile Landscape */
 @media (max-width: 768px) and (orientation: landscape) {
     .overview-text {
-        padding-top: 20px;
-        padding: 0 15px;
-        /* Adjust padding for landscape mode */
+        padding: 20px var(--padding-medium);
     }
 
     .overview-text h2 {
@@ -242,8 +241,7 @@ header {
 /* Mobile Portrait */
 @media (max-width: 480px) and (orientation: portrait) {
     .overview-text {
-        padding: 0 20px;
-        /* Increase padding for portrait mode */
+        padding: 0 var(--padding-medium);
     }
 
     .overview-text h2 {
@@ -254,7 +252,6 @@ header {
         font-size: 0.8em;
     }
 }
-
 
 
 
@@ -435,38 +432,7 @@ header {
 
 
 
-/* Overview Text Styling (Global) */
-.overview-text {
-    text-align: center;
-    margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-    padding: var(--padding-medium);
-    max-width: 600px;
-    text-align: left;
-    border-radius: 10px;
-    flex: 1 1 100%;
-    color: var(--text-color);
-}
 
-.overview-text.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.overview-text h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: var(--secondary-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.overview-text p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    padding: 0 10px;
-}
 
 /* About Us Section */
 .about-us {
@@ -810,19 +776,17 @@ header {
 #why-choose-us {
     background-color: var(--background-color);
     color: var(--text-color);
-    padding: 80px 0;
-    /* Increased padding for better spacing */
+    padding: 80px 20px;
+    /* Slightly reduced padding for better mobile responsiveness */
     text-align: center;
-    /* Centered content for overall balance */
 }
 
+/* Container */
 #why-choose-us .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
-
-
 
 /* Pillars Container */
 .pillars-container {
@@ -830,13 +794,12 @@ header {
     grid-template-columns: repeat(2, 1fr);
     /* Two columns, each taking 50% width */
     gap: 40px;
-    /* Maintain the gap between items */
 }
+
 
 /* Individual Pillar */
 .pillar {
     background-color: var(--primary-color);
-    /* Navy blue background */
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -852,12 +815,9 @@ header {
 /* Pillar Icon */
 .pillar-icon {
     font-size: 3.5em;
-    /* Larger icon size for better visual impact */
     color: var(--secondary-color);
-    /* Light blue */
     margin-bottom: 20px;
     display: block;
-    /* Ensure icon takes up full width */
 }
 
 /* Pillar Heading */
@@ -865,7 +825,6 @@ header {
     font-size: 1.8em;
     margin-bottom: 15px;
     color: var(--text-color);
-    /* White text */
 }
 
 /* Pillar Description */
@@ -874,38 +833,27 @@ header {
     line-height: 1.6;
 }
 
-
 /* Modal Styles */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1001;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 .modal-content {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
     max-width: 600px;
-    /* Limit max width */
     border-radius: 10px;
 }
 
@@ -923,27 +871,20 @@ header {
     cursor: pointer;
 }
 
-
 /* Media Queries for Responsiveness */
 
 /* Tablet Portrait & Landscape */
 @media (max-width: 1024px) {
     .pillars-container {
-        grid-template-columns: repeat(2, 1fr);
-        /* Two columns on tablets */
+        gap: 30px;
+        /* Adjust gap for better spacing on tablets */
     }
 }
 
 /* Mobile Landscape */
 @media (max-width: 768px) and (orientation: landscape) {
     #why-choose-us {
-        padding: 60px 10px;
-    }
-
-    .pillars-container {
-        grid-template-columns: repeat(2, 1fr);
-        /* Two columns in landscape */
-        gap: 20px;
+        padding: 60px 15px;
     }
 
     .pillar {
@@ -955,19 +896,14 @@ header {
     }
 
     .pillar h3 {
-        font-size: 1.5em;
+        font-size: 1.6em;
     }
 }
 
 /* Mobile Portrait */
 @media (max-width: 480px) {
     #why-choose-us {
-        padding: 40px 10px;
-    }
-
-    .pillars-container {
-        grid-template-columns: 1fr;
-        /* One column in portrait */
+        padding: 40px 15px;
     }
 
     .pillar {
@@ -975,18 +911,22 @@ header {
     }
 
     .pillar-icon {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     .pillar h3 {
         font-size: 1.4em;
     }
 
+    .pillars-container {
+        grid-template-columns: 1fr;
+        /* Forces a single-column layout */
+    }
+
     .modal-content {
         margin: 50% auto;
     }
 }
-
 
 
 
