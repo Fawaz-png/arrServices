@@ -4,129 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study/Portfolio Section</title>
-    <link href='//fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Under Construction</title>
     <style>
-        * {
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        body {
-            font-size: 20vmin;
-        }
-
-        .collage--spotlight {
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            border-top: .125rem solid #fff;
-            border-left: .125rem solid #fff;
-            position: relative;
         }
 
-        .spotlight__item {
-            position: absolute;
-            cursor: pointer;
-            border-right: .125rem solid #fff;
-            border-bottom: .125rem solid #fff;
-            transition:
-                top .5s,
-                left .5s,
-                z-index .5s,
-                height .5s,
-                width .5s,
-                background .2s;
-        }
-
-        .spotlight__item.item--active {
-            top: 0;
-            left: 0;
-            z-index: 20;
-            height: 100%;
-            width: 100%;
-        }
-
-        .spotlight__item:nth-of-type(1) {
-            top: 0;
-            left: 0;
-            height: 66.66%;
-            width: 33.33%;
-            background: #317794;
-        }
-
-        .spotlight__item:nth-of-type(2) {
-            top: 66.66%;
-            left: 0;
-            height: 33.33%;
-            width: 33.33%;
-            background: #5ec1c9;
-        }
-
-        .spotlight__item:nth-of-type(3) {
-            top: 0;
-            left: 33.33%;
-            height: 33.33%;
-            width: 66.66%;
-            background: #db92ba;
-        }
-
-        .spotlight__item:nth-of-type(4) {
-            top: 33.33%;
-            left: 33.33%;
-            height: 66.66%;
-            width: 33.33%;
-            background: #521b48;
-        }
-
-        .spotlight__item:nth-of-type(5) {
-            top: 33.33%;
-            left: 66.66%;
-            height: 33.33%;
-            width: 33.33%;
-            background: #9e3550;
-        }
-
-        .spotlight__item:nth-of-type(6) {
-            top: 66.66%;
-            left: 66.66%;
-            height: 33.33%;
-            width: 33.33%;
-            background: #8676d1;
-        }
-
-        .spotlight__item:before {
-            position: absolute;
-            top: 50%;
-            width: 100%;
+        .container {
             text-align: center;
-            transform: translate(0, -50%);
-            color: #fff;
-            content: attr(data-number);
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #007EA7;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .contact-info {
+            font-size: 16px;
+            color: #333;
         }
     </style>
 </head>
+<link rel="stylesheet" href="../assets/css/shared.css">
 
 <body>
-    <section class="collage--spotlight">
-        <div class="spotlight__item" data-number="1"></div>
-        <div class="spotlight__item" data-number="2"></div>
-        <div class="spotlight__item" data-number="3"></div>
-        <div class="spotlight__item" data-number="4"></div>
-        <div class="spotlight__item" data-number="5"></div>
-        <div class="spotlight__item" data-number="6"></div>
-    </section>
+    <header></header>
+    <div class="wrapper">
+        <div class="container">
+            <div class="loader"></div>
+            <h1>Page Under Construction</h1>
+            <p>We are working hard to bring you something awesome! Check back soon.</p>
+            <p class="contact-info">For any inquiries, please contact us at: <br><a
+                    href="mailto:support@example.com">support@example.com</a></p>
+        </div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $('.spotlight__item').click(function () {
-            $(this).toggleClass('item--active');
-        });
+        // Load header
+        fetch('../includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('header').innerHTML = data;
+            });
     </script>
 </body>
 

@@ -8,127 +8,377 @@
         content="Professional event security services ensuring safety and peace of mind for all your events." />
     <meta name="keywords"
         content="event security, security services, crowd management, VIP protection, risk assessment" />
-    <meta name="author" content="Your Company Name" />
+    <meta name="author" content="Bello Fawaz - Arr Services Limited" />
     <title>Arr Services - Event Security Company</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/css/styles.css" />
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-
-        .collage-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .image-collage {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 5px;
-        }
-
-        .image-collage img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .centered-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-        }
-
-        .centered-text h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .centered-text h1 {
-                font-size: 2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .centered-text h1 {
-                font-size: 1.5em;
-            }
-
-            .image-collage {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 1fr);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../assets/css/shared.css" />
+    <link rel="stylesheet" href="../assets/css/about.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="../assets/images/logo.svg" alt="ARR Services Logo" class="logo" loading="lazy" />
-        </div>
-        <nav class="nav-links" role="navigation" aria-label="Main Navigation">
-            <a href="../index.html">Home</a>
-            <a href="#about-us" class="active">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="cta desktop-only" aria-label="Get a Free Quote">
-            Get a Free Quote
-        </button>
-        <button class="hamburger-menu" id="hamburger-menu" aria-label="Open menu" aria-expanded="false"
-            aria-controls="mobile-menu">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </button>
-    </header>
-
+    <!-- Header will be dynamically loaded here -->
+    <header></header>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <button class="close-btn" id="close-btn" aria-label="Close menu">
-            <i class="fa fa-times" aria-hidden="true"></i>
+          <i class="fa fa-times" aria-hidden="true"></i>
         </button>
         <nav role="navigation" aria-label="Mobile Navigation">
-            <a href="#">Home</a>
-            <a href="#about-us">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-            <button class="cta">Get a Free Quote</button>
+          <a href="index.html" class="active">Home</a>
+          <a href="../pages/about.html">About Us</a>
+          <a href="../pages/services.html">Services</a>
+          <a href="../pages/portfolio.html">Portfolio</a>
+          <a href="../pages/testimonials.html">Testimonials</a>
+          <a href="../pages/contact.html">Contact</a>
+          <button class="cta">Get a Free Quote</button>
         </nav>
-    </div>
+      </div>
+      
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="overlay"></div>
+            <div class="hero-text">
+                <h1 class="hero-title">ARR Services</h1>
+                <h2 class="hero-subtitle">Secure Your Event, Ensure Peace of Mind</h2>
+                <button class="cta">Get Your Free Quote</button>
+            </div>
+        </section>
 
-    <div class="collage-container">
-        <div class="image-collage">
-           
-            <img src="../assets/images/IMG-20240515-WA0000.jpg" alt="Image 1">
-            <img src="../assets/images/IMG-20240515-WA0003.jpg" alt="Image 2">
-            <img src="../assets/images/IMG-20240515-WA0005.jpg" alt="Image 3">
-            <img src="../assets/images/IMG-20240515-WA0013.jpg" alt="Image 4">
-        </div>
-        <div class="centered-text">
-            <h1>Your Centered Text</h1>
-        </div>
-    </div>
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 image-col">
+                        <video src="../assets/videos/Whatsapp Video 2024-07-22 At 21.12.39 966C0adc.mp4" muted autoplay
+                            controlsList="nodownload"></video>
+                    </div>
+                    <div class="col-md-6 text-col">
+                        <h2>Our Story</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo ullam facilis assumenda
+                            itaque? Pariatur, eveniet reiciendis? Labore non consequatur omnis sequi, nostrum beatae.
+                            Porro temporibus magnam ratione deleniti fuga nobis!. Lorem, ipsum dolor sit amet
+                            consectetur adipisicing elit. Eum totam reprehenderit architecto accusantium, autem cum
+                            repellendus veniam cumque ex porro consequatur ullam adipisci recusandae veritatis quos iste
+                            incidunt quisquam eius!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission" aria-labelledby="mission-heading">
+            <div class="container">
+                <h2 id="mission-heading">Our Mission</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <h3>Safety First</h3>
+                            <p>Ensuring the safety of all participants at your event is our top priority.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <h3>Professionalism</h3>
+                            <p>Our team is highly trained to handle any situation with professionalism and care.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <i class="fas fa-bullseye" aria-hidden="true"></i>
+                            <h3>Focus on Clients</h3>
+                            <p>We aim to provide tailored security services to meet your specific event needs.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+                            <h3>Reliability</h3>
+                            <p>You can count on us to deliver top-notch security services every time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values" aria-labelledby="values-heading">
+            <div class="container">
+                <h2 id="values-heading">Our Values</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="value">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <h3>Integrity</h3>
+                                <p>We operate with honesty and transparency in everything we do.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="value">
+                                <i class="fas fa-handshake" aria-hidden="true"></i>
+                                <h3>Commitment</h3>
+                                <p>Our commitment to excellence sets us apart in the security industry.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="value">
+                                <i class="fas fa-lock" aria-hidden="true"></i>
+                                <h3>Trust</h3>
+                                <p>You can trust us to ensure your event's security is in the right hands.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="value">
+                                <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                                <h3>Fairness</h3>
+                                <p>We treat everyone with respect and fairness, ensuring a safe environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Behind-the-Scenes Section -->
+        <section class="behind-scenes">
+            <div class="container">
+                <h2>Behind the Scenes</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../assets/images/IMG-20240515-WA0016.jpg" alt="Team Preparing" />
+                    </div>
+                    <div class="col-md-6">
+                        <p>We work tirelessly behind the scenes to ensure everything goes smoothly. Our team conducts
+                            thorough checks before, during, and after the event to prevent any disruptions. We handle
+                            everything from logistics to security measures, leaving no detail unattended.</p>
+                    </div>
+                </div>
+                <div class="row" style="flex-direction: row-reverse;">
+                    <div class="col-md-6">
+                        <img src="../assets/images/IMG-20240515-WA0006.jpg" alt="Setting Up Equipment" />
+                    </div>
+                    <div class="col-md-6">
+                        <p>Our experienced staff works with advanced equipment and technology to monitor the event and
+                            guarantee the highest level of safety. From setting up surveillance systems to coordinating
+                            security personnel, we ensure seamless operations.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../assets/images/IMG-20240515-WA0019.jpg" alt="Security Checkpoints" />
+                    </div>
+                    <div class="col-md-6">
+                        <p>Security checkpoints are strategically placed to provide comprehensive coverage without
+                            interfering with the guest experience. We maintain communication across all areas, adapting
+                            to real-time needs and situations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
+        <!-- Timeline Section -->
+        <section class="timeline" aria-labelledby="timeline-heading">
+            <div class="container">
+                <h2 id="timeline-heading">Our Journey</h2>
+
+                <div class="timeline-item">
+                    <h3>2015</h3>
+                    <p>Founded Secure Celebrations after witnessing a security breach at a friend’s wedding.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>2018</h3>
+                    <p>Expanded services to include VIP protection and large-scale event security.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>2022</h3>
+                    <p>Named one of the top event security companies in the region.</p>
+                </div>
+
+                <!-- Additional Timeline Events -->
+                <div class="timeline-item">
+                    <h3>2023</h3>
+                    <p>Launched cutting-edge digital surveillance systems for improved event safety management.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>2024</h3>
+                    <p>Expanded internationally to cover global events, offering world-class security services.</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Certifications Section -->
+        <section class="certifications" aria-labelledby="certifications-heading">
+            <div class="container">
+                <h2 id="certifications-heading">Certifications & Accreditations</h2>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <img src="../assets/images/certification-1.jpg" alt="Certification 1" />
+                        <p>ISO 9001 Certified</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <img src="../assets/images/certification-2.jpg" alt="Certification 2" />
+                        <p>Member of the Event Security Association</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <img src="../assets/images/certification-3.jpg" alt="Certification 3" />
+                        <p>Licensed Security Personnel</p>
+                    </div>
+
+                    <!-- Additional Certifications -->
+                    <div class="col-md-4 col-sm-6">
+                        <img src="../assets/images/certification-4.jpg" alt="Certification 4" />
+                        <p>Certified Crowd Management Specialist</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <img src="../assets/images/certification-5.jpg" alt="Certification 5" />
+                        <p>Global Event Security Alliance Member</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <img src="../assets/images/certification-6.jpg" alt="Certification 6" />
+                        <p>Advanced Threat Detection Certified</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- FAQ Section -->
+        <section class="faq" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading">Frequently Asked Questions</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 aria-expanded="false">What security services do you offer?</h3>
+                        <div class="content">
+                            <p>We offer discreet security for weddings, crowd management, and VIP protection services.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 aria-expanded="false">How do you ensure privacy during events?</h3>
+                        <div class="content">
+                            <p>Our team blends into the background, ensuring your guests feel comfortable without
+                                compromising security.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 aria-expanded="false">How far in advance should I book your services?</h3>
+                        <div class="content">
+                            <p>We recommend booking our services at least 4-6 weeks before your event for optimal
+                                planning and coordination.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 aria-expanded="false">Do you offer services for large-scale events?</h3>
+                        <div class="content">
+                            <p>Yes, we specialize in large-scale events, including concerts, festivals, and corporate
+                                gatherings.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 aria-expanded="false">Are your security personnel licensed and insured?</h3>
+                        <div class="content">
+                            <p>Yes, all our personnel are fully licensed and insured, with extensive experience in event
+                                security.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Footer will be dynamically loaded here -->
+    <footer class="footer" id="footer"></footer>
+
+    <script>
+        // Load header
+        fetch('../includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('header').innerHTML = data;
+            });
+
+        // Load footer
+        fetch('../includes/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('footer').innerHTML = data;
+            });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('h3');
+                const content = item.querySelector('.content');
+
+                header.addEventListener('click', function () {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all items
+                    accordionItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.content').style.maxHeight = null; // Remove inline styles
+                    });
+
+                    // If the current item is not active, expand it
+                    if (!isActive) {
+                        item.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px'; // Set maxHeight to actual content height
+                    }
+                });
+            });
+        });
+    </script>
     <script src="../assets/js/script.js" type="module"></script>
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

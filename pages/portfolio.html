@@ -4,205 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Under Construction</title>
     <style>
-        body {
-            font-family: 'Raleway', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #111;
-            /* Dark background */
-            color: #fff;
-            /* Light text color */
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .services-section {
-            background: #222;
-            /* Slightly lighter dark background for the section */
-            padding: 50px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .services-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('path/to/your/parallax-image.jpg') no-repeat center center;
-            background-size: cover;
-            transform: translateY(-10%);
-            z-index: -1;
-        }
-
-        .section-header {
+        .container {
             text-align: center;
-            color: #1e90ff;
-            /* Blue color for the header */
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
             margin-bottom: 20px;
         }
 
-        .section-description {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
+        p {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 30px;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #007EA7;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
         }
 
-        .service-card {
-            background: #333;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        .service-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        .animated-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-
-        .service-card:hover .animated-icon {
-            color: #1e90ff;
-            /* Change color on hover */
-        }
-
-        .service-title {
-            margin-top: 10px;
-            font-size: 1.5em;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #222;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            color: #fff;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5em;
-            cursor: pointer;
+        .contact-info {
+            font-size: 16px;
+            color: #333;
         }
     </style>
 </head>
+<link rel="stylesheet" href="../assets/css/shared.css">
 
 <body>
-    <section class="services-section">
+    <header></header>
+    <div class="wrapper">
         <div class="container">
-            <h2 class="section-header">Our Services</h2>
-            <p class="section-description">We provide a range of event security services to ensure your event is safe,
-                secure, and successful.</p>
-            <div class="services-grid">
-                <div class="service-card" id="service-1">
-                    <i class="fas fa-user-shield animated-icon"></i>
-                    <h3 class="service-title">Event Security</h3>
-                </div>
-                <div class="service-card" id="service-2">
-                    <i class="fas fa-users animated-icon"></i>
-                    <h3 class="service-title">Crowd Management</h3>
-                </div>
-                <div class="service-card" id="service-3">
-                    <i class="fas fa-star animated-icon"></i>
-                    <h3 class="service-title">VIP Protection</h3>
-                </div>
-                <div class="service-card" id="service-4">
-                    <i class="fas fa-shield-alt animated-icon"></i>
-                    <h3 class="service-title">Risk Assessment</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close-button" id="close-button">&times;</span>
-            <h3 class="modal-title">Service Title</h3>
-            <p class="modal-description">Detailed information about the service will go here.</p>
+            <div class="loader"></div>
+            <h1>Page Under Construction</h1>
+            <p>We are working hard to bring you something awesome! Check back soon.</p>
+            <p class="contact-info">For any inquiries, please contact us at: <br><a
+                    href="mailto:support@example.com">support@example.com</a></p>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const serviceCards = document.querySelectorAll('.service-card');
-            const modal = document.getElementById('modal');
-            const modalTitle = document.querySelector('.modal-title');
-            const modalDescription = document.querySelector('.modal-description');
-            const closeButton = document.getElementById('close-button');
-
-            const services = {
-                'service-1': {
-                    title: 'Event Security',
-                    description: 'Our event security services ensure the safety and security of your event, providing peace of mind for all attendees.'
-                },
-                'service-2': {
-                    title: 'Crowd Management',
-                    description: 'Expert crowd management services to control and manage large groups of people effectively and safely.'
-                },
-                'service-3': {
-                    title: 'VIP Protection',
-                    description: 'Professional VIP protection services to ensure the safety and security of high-profile individuals.'
-                },
-                'service-4': {
-                    title: 'Risk Assessment',
-                    description: 'Comprehensive risk assessment services to identify and mitigate potential security threats at your event.'
-                }
-            };
-
-            serviceCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const serviceId = card.id;
-                    modalTitle.textContent = services[serviceId].title;
-                    modalDescription.textContent = services[serviceId].description;
-                    modal.style.display = 'flex';
-                });
+        // Load header
+        fetch('../includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('header').innerHTML = data;
             });
-
-            closeButton.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        });
-
     </script>
 </body>
 
