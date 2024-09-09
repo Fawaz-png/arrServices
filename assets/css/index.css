@@ -6,9 +6,12 @@
     transform: translateY(20px);
     transition: opacity 1s ease, transform 1s ease;
     padding: var(--padding-medium);
-    max-width: 600px;
     border-radius: 10px;
     color: var(--text-color);
+}
+
+.about-us .overview-text{
+    max-width: 600px;
 }
 
 .overview-text.fade-in {
@@ -33,6 +36,7 @@
 @media (max-width: 768px) and (orientation: landscape) {
     .overview-text {
         padding: 20px var(--padding-medium);
+        max-width: 100%;
     }
 
     .overview-text h2 {
@@ -249,6 +253,13 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     font-size: 1em;
+}
+
+.about-us .cta a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1em;
+    font-family: 'Raleway', sans-serif;
 }
 
 .about-us .cta:hover {

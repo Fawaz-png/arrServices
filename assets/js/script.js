@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Utility Functions
     const debounce = (func, wait = 200) => {
         let timeout;
         return (...args) => {
@@ -21,23 +20,22 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.setAttribute('aria-hidden', isExpanded);
     };
 
+    // Event Listeners for opening/closing the mobile menu
     if (hamburgerMenu && mobileMenu && closeBtn) {
         hamburgerMenu.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
 
-        // Close menu when clicking on a menu item
         menuLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
 
-        // Close mobile menu when clicking outside links or close button
         mobileMenu.addEventListener('click', (event) => {
             const target = event.target;
             if (
                 mobileMenu.classList.contains('show') &&
+                !target.closest('.mobile-menu nav a') &&
                 target !== hamburgerMenu &&
-                target !== closeBtn &&
-                !target.closest('.mobile-menu nav a')
+                target !== closeBtn
             ) {
                 toggleMenu();
             }

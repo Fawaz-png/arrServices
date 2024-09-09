@@ -327,20 +327,6 @@
     <footer class="footer" id="footer"></footer>
 
     <script>
-        // Load header
-        fetch('../includes/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.querySelector('header').innerHTML = data;
-            });
-
-        // Load footer
-        fetch('../includes/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.querySelector('footer').innerHTML = data;
-            });
-
         document.addEventListener("DOMContentLoaded", function () {
             const accordionItems = document.querySelectorAll('.accordion-item');
 
@@ -366,6 +352,8 @@
             });
         });
     </script>
+
+    <script src="../assets/js/include.js"></script>
     <script src="../assets/js/script.js" type="module"></script>
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

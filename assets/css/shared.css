@@ -48,12 +48,21 @@ header {
 }
 
 .logo-container {
+    display: flex;
+    align-items: center;
     max-width: 120px;
 }
 
 .logo {
     width: 100%;
     height: auto;
+}
+
+.logo-text {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-weight: bolder;
+    font-size: 1em;
 }
 
 .nav-links {
@@ -84,11 +93,6 @@ header {
     transition: background-color 0.3s ease;
     font-weight: bold;
     white-space: nowrap;
-}
-
-.cta a {
-    text-decoration: none;
-    color: white;
 }
 
 .cta:hover {
@@ -135,10 +139,6 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.mobile-menu a:first-child {
-    margin-top: 10%;
-}
-
 .mobile-menu a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -148,7 +148,6 @@ header {
     margin-top: var(--padding-medium);
     width: 100%;
     padding: 16px 32px;
-    ;
 }
 
 .close-btn {
@@ -192,6 +191,7 @@ header {
         max-width: 80px;
     }
 }
+
 
 /* Footer Section */
 .footer {
