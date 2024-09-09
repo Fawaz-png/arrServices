@@ -1,4 +1,3 @@
-
 /* Overview Text Styling (Global) */
 .overview-text {
     text-align: center;
@@ -45,6 +44,7 @@
     }
 }
 
+
 /* Mobile Portrait */
 @media (max-width: 480px) and (orientation: portrait) {
     .overview-text {
@@ -52,11 +52,11 @@
     }
 
     .overview-text h2 {
-        font-size: 3em;
+        font-size: 2em;
     }
 
     .overview-text p {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 }
 
@@ -241,14 +241,14 @@
     scroll-margin-top: 70px;
 }
 
-.about-us .cta{
-    padding: 15px 40px;
+.about-us .cta {
+    padding: 15px 20px;
     background-color: var(--secondary-color);
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .about-us .cta:hover {
@@ -354,12 +354,6 @@
         flex-direction: column;
         text-align: center;
     }
-
-    .overview-text {
-        text-align: center;
-        width: 100%;
-        border: 1px solid red;
-    }
 }
 
 /* Tablet Portrait and Landscape */
@@ -389,7 +383,7 @@
     .carousel-container {
         aspect-ratio: 1 / 1;
     }
-    
+
     .carousel-arrow {
         padding: 5px;
     }

@@ -38,7 +38,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--padding-small) var(--padding-medium);
+    padding: var(--padding-small);
     background-color: var(--primary-color);
     color: white;
     position: sticky;
