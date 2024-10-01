@@ -7,41 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    // Hamburger Menu Functionality
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-btn');
-    const menuLinks = document.querySelectorAll('.mobile-menu nav a');
-
-    const toggleMenu = () => {
-        const isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
-        hamburgerMenu.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.classList.toggle('show');
-        mobileMenu.setAttribute('aria-hidden', isExpanded);
-    };
-
-    // Event Listeners for opening/closing the mobile menu
-    if (hamburgerMenu && mobileMenu && closeBtn) {
-        hamburgerMenu.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        mobileMenu.addEventListener('click', (event) => {
-            const target = event.target;
-            if (
-                mobileMenu.classList.contains('show') &&
-                !target.closest('.mobile-menu nav a') &&
-                target !== hamburgerMenu &&
-                target !== closeBtn
-            ) {
-                toggleMenu();
-            }
-        });
-    }
-
     // Hero Slideshow
     const initHeroSlideshow = () => {
         const images = document.querySelectorAll('.hero-image');

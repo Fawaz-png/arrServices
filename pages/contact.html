@@ -2,79 +2,112 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Under Construction</title>
-    <style>
-        .wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 40px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h1 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 18px;
-            color: #777;
-            margin-bottom: 30px;
-        }
-
-        .loader {
-            border: 16px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 16px solid #007EA7;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .contact-info {
-            font-size: 16px;
-            color: #333;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Professional event security services ensuring safety and peace of mind for all your events." />
+    <meta name="keywords"
+        content="event security, security services, crowd management, VIP protection, risk assessment" />
+    <meta name="author" content="Bello Fawaz - Arr Services Limited" />
+    <title>Arr Services - Event Security Company</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../assets/css/header.css" />
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="stylesheet" href="../assets/css/contact.css" />
 </head>
-<link rel="stylesheet" href="../assets/css/shared.css">
 
 <body>
+    <!-- Header will be dynamically loaded here -->
     <header></header>
-    <div class="wrapper">
-        <div class="container">
-            <div class="loader"></div>
-            <h1>Page Under Construction</h1>
-            <p>We are working hard to bring you something awesome! Check back soon.</p>
-            <p class="contact-info">For any inquiries, please contact us at: <br><a
-                    href="mailto:support@example.com">support@example.com</a></p>
-        </div>
-    </div>
 
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-text">
+                <h1>Contact Us</h1>
+            </div>
+        </section>
+
+        <!-- Get in Touch Section -->
+        <section id="contact-us">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get in Touch</h2>
+                    <p>We're here to assist you. Fill out the form below and we'll get back to you as soon as possible.
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <!-- Form Container -->
+                    <div class="form-container">
+                        <form action="#" method="post">
+                            <!-- Form Inputs -->
+                            <div class="form-group">
+                                <input type="text" id="first-name" name="first-name" placeholder="First Name"
+                                    required />
+                                <label for="first-name">First Name <span class="required">*</span></label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required />
+                                <label for="last-name">Last Name <span class="required">*</span></label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="tel" id="phone-number" name="phone-number" placeholder="Phone Number" />
+                                <label for="phone-number">Phone Number</label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email" required />
+                                <label for="email">Email <span class="required">*</span></label>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" placeholder="Your Message"
+                                    required></textarea>
+                                <label for="message">Message <span class="required">*</span></label>
+                            </div>
+
+                            <button type="submit" class="cta">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Width Map Section -->
+        <section id="map-section">
+            <div id="map"></div>
+        </section>
+    </main>
+
+
+    <!-- Footer will be dynamically loaded here -->
+    <footer class="footer" id="footer"></footer>
+
+
+    
     <script src="../assets/js/include.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZmF3YXpiZWxsbyIsImEiOiJjbHhxcnV4djQwbXVtMmtxd2dlaDM1ZnMyIn0.aOIVUyZLSwLMNN0QRZCyuQ';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [0.3074, 51.4487],
+            zoom: 15
+        });
+
+        new mapboxgl.Marker()
+            .setLngLat([0.3074, 51.4487])
+            .addTo(map);
+    </script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
 </body>
 
 </html>
