@@ -38,7 +38,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--padding-small);
+    padding: 0 var(--padding-small);
     background-color: var(--primary-color);
     color: white;
     position: sticky;
@@ -193,7 +193,7 @@ header {
     }
 
     .logo-text {
-        font-size: 0.6em;
+        font-size: 0.8em;
     }
 
     .logo {
