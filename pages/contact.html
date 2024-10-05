@@ -10,6 +10,11 @@
         content="event security, security services, crowd management, VIP protection, risk assessment" />
     <meta name="author" content="Bello Fawaz - Arr Services Limited" />
     <title>Arr Services - Event Security Company</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <!-- intl-tel-input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" />
@@ -44,38 +49,26 @@
                 <div class="contact-content">
                     <!-- Form Container -->
                     <div class="form-container">
-                        <form action="#" method="post">
-                            <!-- Form Inputs -->
+                        <form id="event-contact-form">
                             <div class="form-group">
-                                <input type="text" id="first-name" name="first-name" placeholder="First Name"
+                                <input type="text" id="name" name="from_name" placeholder="Your Name" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="from_email" placeholder="Your Email" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone_number" placeholder="Your Phone Number"
                                     required />
-                                <label for="first-name">First Name <span class="required">*</span></label>
                             </div>
-
                             <div class="form-group">
-                                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required />
-                                <label for="last-name">Last Name <span class="required">*</span></label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="tel" id="phone-number" name="phone-number" placeholder="Phone Number" />
-                                <label for="phone-number">Phone Number</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Email" required />
-                                <label for="email">Email <span class="required">*</span></label>
-                            </div>
-
-                            <div class="form-group">
-                                <textarea id="message" name="message" rows="5" placeholder="Your Message"
+                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your event"
                                     required></textarea>
-                                <label for="message">Message <span class="required">*</span></label>
                             </div>
-
-                            <button type="submit" class="cta">Send</button>
+                            <button type="submit" class="cta contact-btn">Send</button>
                         </form>
+                        <div id="form-message"></div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -112,6 +105,8 @@
             .addTo(map);
     </script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <script></script>
+    <script src="../assets/js/script.js" type="module"></script>
 </body>
 
 </html>

@@ -46,6 +46,15 @@ header {
     flex-wrap: wrap;
 }
 
+a:focus, 
+button:focus {
+    outline: none; /* Removes the focus outline */
+}
+
+header a{
+    text-decoration: none;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -148,6 +157,7 @@ header {
     margin-top: var(--padding-medium);
     width: 100%;
     padding: 16px 32px;
+    text-align: center;
 }
 
 .close-btn {

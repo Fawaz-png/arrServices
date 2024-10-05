@@ -4,6 +4,25 @@ footer .container {
     padding: var(--padding-small) var(--padding-large);
 }
 
+header .cta{
+    display: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #ddd; /* Change this to your desired color */
+    opacity: 0.5; /* Optional: Set opacity to ensure the placeholder is fully visible */
+}
+
+/* Optional: Style for input fields */
+input,
+textarea {
+    border: 1px solid #ccc; /* Border color */
+    padding: 10px; /* Padding for better spacing */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+}
+
 /* Hero Section */
 #hero {
     background: url('../images/IMG-20240515-WA0016.jpg') center center/cover no-repeat;

@@ -81,3 +81,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 })
+
+const observer = new MutationObserver(() => {
+    const contactButton = document.querySelector('.header-contact-btn');
+    if (contactButton) {
+        contactButton.addEventListener('click', () => {
+            window.location.href = '../pages/contact.html';
+        });
+        observer.disconnect(); // Stop observing once the button is found
+    }
+});
+
+// Start observing changes in the header
+observer.observe(document.querySelector('header'), { childList: true, subtree: true });
+

@@ -10,13 +10,20 @@
     content="event security, security services, crowd management, VIP protection, risk assessment" />
   <meta name="author" content="Your Company Name" />
   <title>Arr Services - Event Security Company</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- intl-tel-input CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+  <!-- intl-tel-input JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="assets/css/header.css"/>
-  <link rel="stylesheet" href="assets/css/footer.css"/>
-  <link rel="stylesheet" href="assets/css/index.css"/>
+  <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/footer.css" />
+  <link rel="stylesheet" href="assets/css/index.css" />
 </head>
 
 <body>
@@ -50,7 +57,7 @@
       <div class="hero-text fade-content">
         <h1 class="hero-title">ARR Services</h1>
         <h2 class="hero-subtitle">Secure Your Event, Ensure Peace of Mind</h2>
-        <button class="cta">Get Your Free Quote</button>
+        <a href="pages/contact.html" class="cta" aria-label="Contact Us Today">Contact Us</a>
       </div>
     </section>
 
@@ -78,7 +85,7 @@
             difference of working with a security partner who truly cares about
             your success.
           </p>
-          <button class="cta" aria-label="Learn more about ARR Services">
+          <button class="cta about-btn" aria-label="Learn more about ARR Services">
             <a href="pages/about.html"> Learn More About Us </a>
           </button>
         </div>
@@ -295,7 +302,7 @@
               <div class="testimonial-card">
                 <div class="testimonial-header">
                   <div class="client-details">
-                    <p class="client-name">John Doe</p>
+                    <p class="client-name">Harry Smith</p>
                     <p class="client-event">Music Concert</p>
                   </div>
                 </div>
@@ -397,11 +404,6 @@
             <img src="assets/images/hero-3.jpg" alt="Music Festival Security" loading="lazy" />
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Music Festival Security</h3>
-                <p>
-                  Ensuring the safety of thousands of attendees at a vibrant
-                  outdoor music festival.
-                </p>
               </div>
             </div>
           </div>
@@ -412,11 +414,6 @@
 
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Corporate Conference Protection</h3>
-                <p>
-                  Providing discreet security for a high-profile corporate
-                  conference with VIP attendees.
-                </p>
               </div>
             </div>
           </div>
@@ -425,11 +422,7 @@
             <img src="assets/images/IMG-20240515-WA0002.jpg" alt="Stadium Crowd Management" loading="lazy" />
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Stadium Crowd Management</h3>
-                <p>
-                  Efficiently managing crowd flow and ensuring safety at a
-                  packed sporting event in a large stadium.
-                </p>
+
               </div>
             </div>
           </div>
@@ -438,11 +431,6 @@
             <img src="assets/images/IMG-20240515-WA0004.jpg" alt="Private Party Security" loading="lazy" />
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Private Party Security</h3>
-                <p>
-                  Providing personalized security for a private VIP party,
-                  ensuring the discretion and safety of guests.
-                </p>
               </div>
             </div>
           </div>
@@ -451,11 +439,7 @@
             <img src="assets/images/IMG-20240515-WA0017.jpg" alt="Trade Show Security" loading="lazy" />
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Trade Show Security</h3>
-                <p>
-                  Safeguarding exhibitors and attendees at a large international
-                  trade show, preventing theft and ensuring a smooth experience.
-                </p>
+
               </div>
             </div>
           </div>
@@ -465,11 +449,7 @@
               controlsList="nodownload"></video>
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Charity Gala Security</h3>
-                <p>
-                  Ensuring the safety and security of guests and high-value
-                  items at a prestigious charity gala.
-                </p>
+
               </div>
             </div>
           </div>
@@ -479,11 +459,7 @@
               controlsList="nodownload"></video>
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Charity Gala Security</h3>
-                <p>
-                  Ensuring the safety and security of guests and high-value
-                  items at a prestigious charity gala.
-                </p>
+
               </div>
             </div>
           </div>
@@ -492,11 +468,7 @@
             <video src="assets/videos/Vid-20240516-Wa0001.mp4" muted autoplay controlsList="nodownload"></video>
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Charity Gala Security</h3>
-                <p>
-                  Ensuring the safety and security of guests and high-value
-                  items at a prestigious charity gala.
-                </p>
+
               </div>
             </div>
           </div>
@@ -506,11 +478,7 @@
               controlsList="nodownload"></video>
             <div class="overlay">
               <div class="overlay-content">
-                <h3>Charity Gala Security</h3>
-                <p>
-                  Ensuring the safety and security of guests and high-value
-                  items at a prestigious charity gala.
-                </p>
+
               </div>
             </div>
           </div>
@@ -530,18 +498,23 @@
         <div class="contact-content">
           <div class="map-container" id="map"></div>
           <div class="form-container">
-            <form action="#" method="post">
+            <form id="event-contact-form">
               <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                <input type="text" id="name" name="from_name" placeholder="Your Name" required />
               </div>
               <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                <input type="email" id="email" name="from_email" placeholder="Your Email" required />
               </div>
               <div class="form-group">
-                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                <input type="tel" id="phone" name="phone_number" placeholder="Your Phone Number" required />
               </div>
-              <button type="submit" class="cta">Send</button>
+              <div class="form-group">
+                <textarea id="message" name="message" rows="5" placeholder="Tell us about your event"
+                  required></textarea>
+              </div>
+              <button type="submit" class="cta contact-btn">Send</button>
             </form>
+            <div id="form-message"></div>
           </div>
           <div class="contact-info">
             <div class="contact-item">
@@ -571,6 +544,7 @@
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+
 </body>
 
 </html>

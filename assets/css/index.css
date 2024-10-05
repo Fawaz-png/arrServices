@@ -152,6 +152,7 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
 }
 
 .hero-text .cta:hover {

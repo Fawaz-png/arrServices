@@ -270,24 +270,64 @@ new mapboxgl.Marker()
 
 
 
-// JavaScript for the contact form (example using EmailJS)
+// Initialize EmailJS with your public key
+emailjs.init('BlwRd1dqrTlv2MsVM'); // Replace with your actual public key
 
-// Replace with your EmailJS service ID and template ID
-emailjs.init("YOUR_PUBLIC_KEY");
 
-const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', function (event) {
+// Attach an event listener to handle form submission
+// Initialize intl-tel-input
+const phoneInputField = document.getElementById('phone');
+const iti = window.intlTelInput(phoneInputField, {
+    initialCountry: "auto", // Automatically select based on IP
+    geoIpLookup: function (callback) {
+        fetch('https://ipinfo.io/json', { headers: { 'Accept': 'application/json' } })
+            .then(function (resp) { return resp.json(); })
+            .then(function (resp) { callback(resp.country); })
+            .catch(function () { callback('us'); });
+    },
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+});
+
+// Form submission event listener
+
+// Get the event contact form element
+const eventContactForm = document.getElementById('event-contact-form');
+
+eventContactForm.addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent default form submission
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+    // Validate phone number
+    if (!iti.isValidNumber()) {
+        alert("Please enter a valid phone number.");
+        return;
+    }
+
+    // Get the full international phone number
+    const phoneNumber = iti.getNumber();
+
+    // Add phone number to the form before submission
+    const phoneInput = document.createElement('input');
+    phoneInput.setAttribute('type', 'hidden');
+    phoneInput.setAttribute('name', 'phone_number');
+    phoneInput.setAttribute('value', phoneNumber);
+    eventContactForm.appendChild(phoneInput);
+
+    // Send the form data via EmailJS
+    emailjs.sendForm('service_5hq3y02', 'template_rwlavle', this)
         .then(function (response) {
-            alert('Message sent successfully!');
-            contactForm.reset(); // Clear the form fields
+            document.getElementById('form-message').innerHTML = 'Message sent successfully! We’ll be in touch soon.';
+            document.getElementById('form-message').style.color = '#00A8E8';
+            eventContactForm.reset(); // Clear form fields
         }, function (error) {
-            alert('Error sending message: ' + error);
+            document.getElementById('form-message').innerHTML = 'Error sending message: ' + error.text;
+            document.getElementById('form-message').style.color = 'red';
         });
 });
+
+
+
+
 
 
 
