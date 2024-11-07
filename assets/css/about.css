@@ -35,6 +35,10 @@
     color: var(--text-color);
 }
 
+.row .image-col{
+    align-self: center;
+}
+
 .about .image-col video {
     width: 100%;
     height: auto;
