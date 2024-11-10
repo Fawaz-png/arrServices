@@ -9,10 +9,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hero Slideshow
     const initHeroSlideshow = () => {
-        const images = document.querySelectorAll('.hero-image');
+        let images = Array.from(document.querySelectorAll('.hero-image'));
         let currentIndex = 0;
         let interval;
 
+        // Function to shuffle the images array
+        const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+        };
+
+        // Shuffle the images array before starting
+        shuffleArray(images);
+
+        // Function to show the next image
         const nextImage = () => {
             images[currentIndex]?.classList.remove('active');
             currentIndex = (currentIndex + 1) % images.length;
@@ -20,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (images.length > 0) {
-            interval = setInterval(nextImage, 1600);
+            interval = setInterval(nextImage, 2000);
 
             const slideshow = document.querySelector('.slideshow');
             if (slideshow) {
                 slideshow.addEventListener('mouseenter', () => clearInterval(interval));
                 slideshow.addEventListener('mouseleave', () => {
-                    interval = setInterval(nextImage, 1600);
+                    interval = setInterval(nextImage, 2000);
                 });
             }
         }
@@ -34,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Carousel Functionality
     const initCarousel = () => {
-        const slides = document.querySelectorAll('.carousel-slide');
+        let slides = Array.from(document.querySelectorAll('.carousel-slide'));
         const indicators = document.querySelectorAll('.indicator');
         const leftArrow = document.getElementById('left-arrow');
         const rightArrow = document.getElementById('right-arrow');
@@ -42,6 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentSlideIndex = 0;
         let autoSlideInterval;
 
+        // Function to shuffle the slides array
+        const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+        };
+
+        // Shuffle the slides array before starting
+        shuffleArray(slides);
+
+        // Function to display the specified slide
         const showSlide = (index) => {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
@@ -50,20 +74,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
+        // Move to the next slide
         const nextSlide = () => {
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
             showSlide(currentSlideIndex);
         };
 
+        // Move to the previous slide
         const prevSlide = () => {
             currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
             showSlide(currentSlideIndex);
         };
 
         if (leftArrow && rightArrow && slides.length > 0) {
+            // Add click event listeners to arrows
             leftArrow.addEventListener('click', prevSlide);
             rightArrow.addEventListener('click', nextSlide);
 
+            // Add click event listeners to indicators
             indicators.forEach((indicator, i) => {
                 indicator.addEventListener('click', () => {
                     currentSlideIndex = i;
@@ -71,17 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
+            // Function to start auto-slide
             const startAutoSlide = () => {
-                autoSlideInterval = setInterval(nextSlide, 3000);
+                autoSlideInterval = setInterval(nextSlide, 2000);
             };
 
+            // Function to stop auto-slide
             const stopAutoSlide = () => {
                 clearInterval(autoSlideInterval);
             };
 
+            // Pause auto-slide on mouse enter and resume on mouse leave
             carouselWrapper.addEventListener('mouseenter', stopAutoSlide);
             carouselWrapper.addEventListener('mouseleave', startAutoSlide);
 
+            // Start auto-sliding and display the initial slide
             startAutoSlide();
             showSlide(currentSlideIndex);
         }
@@ -270,7 +302,7 @@ new mapboxgl.Marker()
 
 
 
-// Initialize EmailJS with your public key
+/* Initialize EmailJS with your public key
 emailjs.init('BlwRd1dqrTlv2MsVM'); // Replace with your actual public key
 
 
@@ -409,4 +441,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+*/
