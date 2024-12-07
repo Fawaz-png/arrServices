@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (images.length > 0) {
-            interval = setInterval(nextImage, 2000);
+            interval = setInterval(nextImage, 2600);
 
             const slideshow = document.querySelector('.slideshow');
             if (slideshow) {
                 slideshow.addEventListener('mouseenter', () => clearInterval(interval));
                 slideshow.addEventListener('mouseleave', () => {
-                    interval = setInterval(nextImage, 2000);
+                    interval = setInterval(nextImage, 2600);
                 });
             }
         }
