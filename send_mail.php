@@ -9,13 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = ['success' => false, 'message' => ''];
 
     // Sanitize and validate input
-    $name = htmlspecialchars($_POST['from_name']);
-    $email = filter_var($_POST['from_email'], FILTER_SANITIZE_EMAIL);
-    $phone = htmlspecialchars($_POST['phone_number']);
-    $message = htmlspecialchars($_POST['message']);
+    $name = htmlspecialchars(trim($_POST['from_name']));
+    $email = filter_var(trim($_POST['from_email']), FILTER_SANITIZE_EMAIL);
+    $phone = htmlspecialchars(trim($_POST['phone_number']));
+    $message = htmlspecialchars(trim($_POST['message']));
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $response['message'] = "Invalid email format";
+        $response['message'] = "Invalid email format.";
         echo json_encode($response);
         exit;
     }
@@ -26,16 +26,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.example.com'; // Replace with your SMTP host
+        $mail->Host = 'mail.arrservicesltd.co.uk'; // SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = 'your_smtp_username'; // Replace with your SMTP username
-        $mail->Password = 'your_smtp_password'; // Replace with your SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        $mail->Username = 'support1@arrservicesltd.co.uk'; // Email address
+        $mail->Password = 'arrservicesltd'; // Email password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Use SSL encryption
+        $mail->Port = 465; // SMTP port for SSL
 
         // Email content setup
-        $mail->setFrom('your_email@example.com', 'Your Company Name'); // Use an email from your domain
-        $mail->addAddress('fawazbello613@gmail.com'); // Recipient
+        $mail->setFrom('support1@arrservicesltd.co.uk', 'ArrServices Ltd');
+        $mail->addAddress('info@arrservices.co.uk'); // Recipient
+        $mail->addBCC('bellofawazolatunde@gmail.com'); // BCC recipient
         $mail->addReplyTo($email, $name);
 
         $mail->isHTML(true);
@@ -51,12 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ";
         $mail->AltBody = "New Event Inquiry\n\nName: {$name}\nEmail: {$email}\nPhone: {$phone}\nMessage:\n{$message}";
 
-        // Send email
         $mail->send();
+
+        // If email is sent successfully
         $response['success'] = true;
         $response['message'] = "Message sent successfully!";
     } catch (Exception $e) {
-        $response['message'] = "Message could not be sent. Error: {$mail->ErrorInfo}";
+        $response['message'] = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 
     echo json_encode($response);

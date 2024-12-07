@@ -306,7 +306,7 @@
           <p>Don't just take our word for it. See what our satisfied clients have to say about our exceptional services.
           </p>
           <!-- Add Review Button -->
-        <button id="add-review-btn">Add Review</button>
+          <button id="add-review-btn">Add Review</button>
         </div>
         <!-- Predefined Reviews -->
         <div class="testimonials-list">
@@ -467,7 +467,7 @@
         <div class="contact-content">
           <div class="map-container" id="map"></div>
           <div class="form-container">
-            <form id="event-contact-form">
+            <form id="event-contact-form" action="send_mail.php" method="POST">
               <div class="form-group">
                 <input type="text" id="name" name="from_name" placeholder="Your Name" required />
               </div>
@@ -596,6 +596,38 @@
 
   </script>
 
+
+  <script>
+    document.getElementById("event-contact-form").addEventListener("submit", async function (e) {
+      e.preventDefault(); // Prevent default form submission
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+        });
+
+        const result = await response.json();
+        const formMessage = document.getElementById("form-message");
+
+        if (result.success) {
+          formMessage.textContent = "Your message was sent successfully!";
+          formMessage.style.color = "green";
+          form.reset(); // Reset the form fields
+        } else {
+          formMessage.textContent = result.message;
+          formMessage.style.color = "red";
+        }
+      } catch (error) {
+        document.getElementById("form-message").textContent =
+          "An error occurred while sending your message. Please try again.";
+        console.error("Error:", error);
+      }
+    });
+  </script>
 </body>
 
 </html>
