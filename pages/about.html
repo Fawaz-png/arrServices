@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../assets/css/header.css"/>
+    <link rel="stylesheet" href="../assets/css/header.css" />
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/shared.css">
     <link rel="stylesheet" href="../assets/css/about.css">
@@ -151,9 +151,11 @@
         <section class="behind-scenes">
             <div class="container">
                 <h2>Behind the Scenes</h2>
+
+                <!-- Row 1 -->
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="../assets/images/IMG-20240515-WA0016.jpg" alt="Team Preparing" />
+                        <img src="../assets/images/IMG-20240515-WA0016.jpg" alt="Team Preparing" class="img-fluid" />
                     </div>
                     <div class="col-md-6">
                         <p>We work tirelessly behind the scenes to ensure everything goes smoothly. Our team conducts
@@ -161,19 +163,25 @@
                             everything from logistics to security measures, leaving no detail unattended.</p>
                     </div>
                 </div>
-                <div class="row" style="flex-direction: row-reverse;">
-                    <div class="col-md-6">
-                        <img src="../assets/images/IMG-20241005-WA0037.jpg" alt="Setting Up Equipment" />
+
+                <!-- Row 2 -->
+                <div class="row">
+                    <div class="col-md-6 order-md-2">
+                        <img src="../assets/images/IMG-20241005-WA0037.jpg" alt="Setting Up Equipment"
+                            class="img-fluid" />
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 order-md-1">
                         <p>Our experienced staff works with advanced equipment and technology to monitor the event and
                             guarantee the highest level of safety. From setting up surveillance systems to coordinating
                             security personnel, we ensure seamless operations.</p>
                     </div>
                 </div>
+
+                <!-- Row 3 -->
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="../assets/images/IMG-20241019-WA0013.jpg" alt="Security Checkpoints" />
+                        <img src="../assets/images/IMG-20241019-WA0013.jpg" alt="Security Checkpoints"
+                            class="img-fluid portrait-img" />
                     </div>
                     <div class="col-md-6">
                         <p>Security checkpoints are strategically placed to provide comprehensive coverage without
@@ -183,6 +191,9 @@
                 </div>
             </div>
         </section>
+
+
+
 
 
         <!-- Timeline Section -->
@@ -335,10 +346,10 @@
     </script>
 
     <script src="../assets/js/include.js"></script>
-   
+
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    
+
 </body>
 
 </html>

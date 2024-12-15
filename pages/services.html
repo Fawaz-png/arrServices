@@ -136,7 +136,8 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
+
+        <!-- Testimonials Section 
         <section class="testimonials">
             <h2>What Our Clients Say</h2>
             <div class="swiper-container testimonial-slider">
@@ -180,6 +181,8 @@
             </div>
         </section>
 
+        -->
+
 
         <!-- Case Studies/Projects Section -->
         <section class="case-studies">
@@ -189,16 +192,46 @@
                     <img src="../assets/images/IMG-20240515-WA0017.jpg" alt="Event Security Project">
                     <h3>Corporate Event Security</h3>
                     <p>We successfully managed security for a 5,000-attendee corporate event.</p>
-                    <a href="#case-study-1" class="learn-more">Learn More</a>
+                    <button class="learn-more cta" data-modal="modal1">Learn More</button>
                 </div>
                 <div class="case-item">
                     <img src="../assets/images/IMG-20240515-WA0014.jpg" alt="VIP Protection Project">
                     <h3>VIP Conference Protection</h3>
                     <p>Our VIP protection ensured the safety of high-profile attendees.</p>
-                    <a href="#case-study-2" class="learn-more">Learn More</a>
+                    <button class="learn-more cta" data-modal="modal2">Learn More</button>
                 </div>
             </div>
         </section>
+
+        <!-- Modals -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Corporate Event Security</h3>
+                <p>
+                    During this high-profile corporate event with 5,000 attendees, our team provided top-tier security
+                    services.
+                    Using advanced surveillance systems and strategically positioned personnel, we ensured the safety
+                    and smooth
+                    execution of the event. From entry checkpoints to real-time monitoring, every detail was
+                    meticulously handled.
+                </p>
+            </div>
+        </div>
+
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>VIP Conference Protection</h3>
+                <p>
+                    For a VIP conference hosting some of the most influential personalities, we delivered a customized
+                    security plan.
+                    Our team managed VIP escorts, secure zones, and crowd control, ensuring maximum privacy and safety.
+                    The event concluded successfully with zero incidents reported.
+                </p>
+            </div>
+        </div>
+
 
         <!-- Call to Action/Contact Section -->
         <section class="contact-cta" id="contact">
@@ -216,6 +249,43 @@
     <!-- Footer will be dynamically loaded here -->
     <footer class="footer" id="footer"></footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modals = document.querySelectorAll('.modal');
+            const learnMoreButtons = document.querySelectorAll('.learn-more');
+            const closeButtons = document.querySelectorAll('.close');
+
+            // Open modal
+            learnMoreButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'flex'; // Show modal
+                    }
+                });
+            });
+
+            // Close modal on clicking the close button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none'; // Hide modal
+                    }
+                });
+            });
+
+            // Close modal on clicking outside the modal content
+            modals.forEach(modal => {
+                modal.addEventListener('click', event => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none'; // Hide modal
+                    }
+                });
+            });
+        });
+    </script>
     <script src="../assets/js/include.js"></script>
     <script src="../assets/js/script.js" type="module"></script>
     <!-- Swiper JS -->

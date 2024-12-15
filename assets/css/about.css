@@ -35,7 +35,7 @@
     color: var(--text-color);
 }
 
-.row .image-col{
+.row .image-col {
     align-self: center;
 }
 
@@ -259,52 +259,102 @@
 
 /* Behind-the-Scenes Section */
 .behind-scenes {
-    padding: var(--padding-large) 0;
+    padding: 40px 20px;
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
 .behind-scenes h2 {
     text-align: center;
-    font-size: 2.5em;
-    margin-bottom: var(--padding-medium);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
     color: var(--secondary-color);
 }
 
 .behind-scenes .row {
     display: flex;
     align-items: center;
-    margin-bottom: var(--padding-medium);
+    margin-bottom: 30px;
+    gap: 20px;
+    /* Ensure spacing between columns */
 }
 
 .behind-scenes .col-md-6 {
-    padding: var(--padding-small);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.behind-scenes .row:nth-of-type(2){
+    flex-direction: row-reverse;
 }
 
 .behind-scenes img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    /* Ensure proper cropping for irregular dimensions */
 }
 
+/* Special styling for portrait-type images */
+.behind-scenes img.portrait-img {
+    max-height: 400px;
+    /* Constrain height for portrait images */
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Paragraph styling for readability */
 .behind-scenes p {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     line-height: 1.8;
     color: var(--text-color);
-    padding: var(--padding-small);
+    padding: 10px;
+    margin: 0;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .behind-scenes .row {
         flex-direction: column;
-        margin-bottom: var(--padding-small);
+        /* Stack columns vertically */
+        gap: 15px;
     }
 
-    .behind-scenes .col-md-6 {
-        max-width: 100%;
+    .behind-scenes img.portrait-img {
+        max-height: 400px;
+        /* Reduce portrait image height for smaller screens */
     }
 }
+
+@media (orientation: landscape) {
+    .behind-scenes img.portrait-img {
+        max-height: 350px;
+        /* Adjust height specifically for landscape mode */
+    }
+}
+
+@media (max-width: 576px) {
+    .behind-scenes {
+        padding: 20px 10px;
+        /* Reduce padding for extra small screens */
+    }
+
+    .behind-scenes h2 {
+        font-size: 2rem;
+        /* Adjust heading size */
+    }
+
+    .behind-scenes p {
+        font-size: 1rem;
+        /* Adjust text size */
+    }
+}
+
+
 
 
 /* Timeline Section */
@@ -461,13 +511,15 @@
 }
 
 .accordion-item h3::after {
-    content: '\002B'; /* Plus symbol */
+    content: '\002B';
+    /* Plus symbol */
     font-size: 1.2rem;
     color: var(--hover-color);
 }
 
 .accordion-item.active h3::after {
-    content: '\2212'; /* Minus symbol */
+    content: '\2212';
+    /* Minus symbol */
 }
 
 .accordion-item.active h3 {
@@ -475,14 +527,17 @@
 }
 
 .accordion-item .content {
-    max-height: 0;  /* Start with max-height: 0 for collapsed state */
+    max-height: 0;
+    /* Start with max-height: 0 for collapsed state */
     overflow: hidden;
     transition: max-height 0.4s ease;
 }
 
 .accordion-item.active .content {
-    max-height: 1000px;  /* Arbitrary large max-height to allow smooth transition */
-    transition: max-height 0.4s ease; /* Smooth transition */
+    max-height: 1000px;
+    /* Arbitrary large max-height to allow smooth transition */
+    transition: max-height 0.4s ease;
+    /* Smooth transition */
 }
 
 .accordion-item p {
@@ -492,6 +547,7 @@
     padding-left: 10px;
     line-height: 1.6;
 }
+
 .accordion-item p {
     margin: 0;
     font-size: 1rem;

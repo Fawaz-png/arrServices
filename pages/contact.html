@@ -49,24 +49,34 @@
                 <div class="contact-content">
                     <!-- Form Container -->
                     <div class="form-container">
-                        <form id="event-contact-form">
+                        <form id="event-contact-form" action="send_mail.php" method="POST" novalidate>
                             <div class="form-group">
-                                <input type="text" id="name" name="from_name" placeholder="Your Name" required />
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="from_name" required />
+                                <span class="error-message"></span>
                             </div>
                             <div class="form-group">
-                                <input type="email" id="email" name="from_email" placeholder="Your Email" required />
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="from_email" required />
+                                <span class="error-message"></span>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="phone" name="phone_number" placeholder="Your Phone Number"
-                                    required />
+                                <label for="phone">Your Phone Number</label>
+                                <input type="tel" id="phone" name="phone_number" required />
+                                <span class="error-message"></span>
                             </div>
                             <div class="form-group">
-                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your event"
-                                    required></textarea>
+                                <label for="message">Tell us about your event</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <span class="error-message"></span>
                             </div>
-                            <button type="submit" class="cta contact-btn">Send</button>
+                            <button type="submit" class="cta contact-btn">
+                                <span>Send</span>
+                                <span class="loading-spinner"></span>
+                            </button>
                         </form>
-                        <div id="form-message"></div>
+                        <!-- Toast Message -->
+                        <div id="toast" class="toast"></div>
                     </div>
 
                 </div>
@@ -107,6 +117,71 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
     <script></script>
     <script src="../assets/js/script.js" type="module"></script>
+    <script>
+        document.getElementById("event-contact-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+            const toast = document.getElementById("toast");
+
+            // Clear error messages
+            document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
+
+            // Basic real-time validation
+            let isValid = true;
+            form.querySelectorAll("input, textarea").forEach(field => {
+                const errorMessage = field.parentElement.querySelector(".error-message");
+                if (!field.checkValidity()) {
+                    errorMessage.textContent = field.validationMessage || "This field is required.";
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) return;
+
+            // Show loading spinner
+            form.querySelector(".loading-spinner").style.display = "inline-block";
+            form.querySelector("button span:first-child").textContent = "Sending...";
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast("Your message was sent successfully!", "success");
+                    form.reset();
+                } else {
+                    showToast(result.message || "Failed to send your message.", "error");
+                }
+            } catch (error) {
+                showToast("An error occurred. Please try again.", "error");
+                console.error("Error:", error);
+            } finally {
+                // Hide loading spinner
+                form.querySelector(".loading-spinner").style.display = "none";
+                form.querySelector("button span:first-child").textContent = "Send";
+            }
+        });
+
+        // Show toast message
+        function showToast(message, type) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.className = `toast toast-${type}`;
+            toast.style.opacity = 1;
+
+            // Automatically hide toast after 4 seconds
+            setTimeout(() => {
+                toast.style.opacity = 0;
+            }, 4000);
+        }
+
+    </script>
 </body>
 
 </html>

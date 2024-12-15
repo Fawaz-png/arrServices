@@ -143,7 +143,7 @@
         </div>
         <div class="swiper-container services-swiper fade-content" aria-label="Services Carousel">
           <div class="swiper-wrapper">
-            <!-- Service Slide 1 -->
+            <!-- Service Slides -->
             <div class="swiper-slide">
               <div class="service-block">
                 <img src="assets/images/IMG-20241019-WA0013.jpg" alt="Event Security" />
@@ -156,7 +156,6 @@
                 </div>
               </div>
             </div>
-            <!-- Service Slide 2 -->
             <div class="swiper-slide">
               <div class="service-block">
                 <img src="assets/images/IMG-20241005-WA0037.jpg" alt="Crowd Management" />
@@ -169,7 +168,6 @@
                 </div>
               </div>
             </div>
-            <!-- Service Slide 3 -->
             <div class="swiper-slide">
               <div class="service-block">
                 <img src="assets/images/IMG-20240515-WA0019.webp" alt="Access Control" />
@@ -182,7 +180,6 @@
                 </div>
               </div>
             </div>
-            <!-- Service Slide 4 -->
             <div class="swiper-slide">
               <div class="service-block">
                 <img src="assets/images/IMG-20240515-WA0001.webp" alt="Risk Assessment" />
@@ -191,19 +188,6 @@
                   <p>
                     Conducting thorough risk assessments to identify and
                     mitigate potential threats.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- Service Slide 5 -->
-            <div class="swiper-slide">
-              <div class="service-block">
-                <img src="assets/images/IMG-20240515-WA0017.webp" alt="Emergency Response Planning" />
-                <div class="description">
-                  <h3>Emergency Response Planning</h3>
-                  <p>
-                    Developing comprehensive emergency response plans to handle
-                    any situation swiftly and efficiently.
                   </p>
                 </div>
               </div>
@@ -217,6 +201,7 @@
         </div>
       </div>
     </section>
+
 
     <section id="why-choose-us">
       <div class="container">
@@ -467,23 +452,34 @@
         <div class="contact-content">
           <div class="map-container" id="map"></div>
           <div class="form-container">
-            <form id="event-contact-form" action="send_mail.php" method="POST">
+            <form id="event-contact-form" action="send_mail.php" method="POST" novalidate>
               <div class="form-group">
-                <input type="text" id="name" name="from_name" placeholder="Your Name" required />
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="from_name" required />
+                <span class="error-message"></span>
               </div>
               <div class="form-group">
-                <input type="email" id="email" name="from_email" placeholder="Your Email" required />
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="from_email" required />
+                <span class="error-message"></span>
               </div>
               <div class="form-group">
-                <input type="tel" id="phone" name="phone_number" placeholder="Your Phone Number" required />
+                <label for="phone">Your Phone Number</label>
+                <input type="tel" id="phone" name="phone_number" required />
+                <span class="error-message"></span>
               </div>
               <div class="form-group">
-                <textarea id="message" name="message" rows="5" placeholder="Tell us about your event"
-                  required></textarea>
+                <label for="message">Tell us about your event</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <span class="error-message"></span>
               </div>
-              <button type="submit" class="cta contact-btn">Send</button>
+              <button type="submit" class="cta contact-btn">
+                <span>Send</span>
+                <span class="loading-spinner"></span>
+              </button>
             </form>
-            <div id="form-message"></div>
+            <!-- Toast Message -->
+            <div id="toast" class="toast"></div>
           </div>
           <div class="contact-info">
             <div class="contact-item">
@@ -521,56 +517,52 @@
       const closeModal = document.getElementById('close-modal');
       const reviewForm = document.getElementById('review-form');
       const testimonialList = document.querySelector('.testimonials-list');
-      const localStorageKey = 'userTestimonials';
-
-      // Load saved testimonials from localStorage (if any)
-      const loadTestimonials = () => {
-        const savedTestimonials = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-        savedTestimonials.forEach(testimonial => {
-          appendTestimonial(testimonial);
-        });
-      };
 
       // Append testimonial to the DOM
       const appendTestimonial = (testimonial) => {
         const testimonialCard = document.createElement('div');
         testimonialCard.classList.add('testimonial-card');
         testimonialCard.innerHTML = `
-            <p class="client-name">${testimonial.name}</p>
-            <p class="client-event">${testimonial.event}</p>
-            <p class="testimonial-text">"${testimonial.message}"</p>
-            <div class="rating">${'★'.repeat(testimonial.rating)}</div>
-        `;
+        <p class="client-name">${testimonial.name}</p>
+        <p class="client-event">${testimonial.event}</p>
+        <p class="testimonial-text">"${testimonial.message}"</p>
+        <div class="rating">${'★'.repeat(testimonial.rating)}</div>
+    `;
         testimonialList.prepend(testimonialCard); // Add to the top of the list
       };
 
       // Handle review form submission
-      reviewForm.addEventListener('submit', (e) => {
+      reviewForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const name = document.getElementById('client-name').value;
-        const event = document.getElementById('client-event').value;
-        const message = document.getElementById('testimonial-message').value;
-        const rating = document.getElementById('testimonial-rating').value;
+        const formData = new FormData(reviewForm);
+        try {
+          const response = await fetch('save_review.php', {
+            method: 'POST',
+            body: formData,
+          });
 
-        const newTestimonial = {
-          name,
-          event,
-          message,
-          rating: parseInt(rating)
-        };
+          const result = await response.json();
 
-        // Save testimonial to localStorage
-        const savedTestimonials = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-        savedTestimonials.unshift(newTestimonial); // Add new review to the beginning
-        localStorage.setItem(localStorageKey, JSON.stringify(savedTestimonials));
+          if (result.success) {
+            // Append the new testimonial
+            appendTestimonial({
+              name: formData.get('client_name'),
+              event: formData.get('client_event'),
+              message: formData.get('testimonial_message'),
+              rating: formData.get('testimonial_rating'),
+            });
 
-        // Append the new testimonial
-        appendTestimonial(newTestimonial);
-
-        // Close the modal and reset form
-        modal.style.display = 'none';
-        reviewForm.reset();
+            // Close the modal and reset form
+            modal.style.display = 'none';
+            reviewForm.reset();
+          } else {
+            alert('Error saving review: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while submitting your review.');
+        }
       });
 
       // Open modal to add a new review
@@ -589,20 +581,36 @@
           modal.style.display = 'none';
         }
       });
-
-      // Load initial testimonials on page load
-      loadTestimonials();
     });
-
   </script>
 
 
   <script>
     document.getElementById("event-contact-form").addEventListener("submit", async function (e) {
-      e.preventDefault(); // Prevent default form submission
+      e.preventDefault();
 
       const form = e.target;
       const formData = new FormData(form);
+      const toast = document.getElementById("toast");
+
+      // Clear error messages
+      document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
+
+      // Basic real-time validation
+      let isValid = true;
+      form.querySelectorAll("input, textarea").forEach(field => {
+        const errorMessage = field.parentElement.querySelector(".error-message");
+        if (!field.checkValidity()) {
+          errorMessage.textContent = field.validationMessage || "This field is required.";
+          isValid = false;
+        }
+      });
+
+      if (!isValid) return;
+
+      // Show loading spinner
+      form.querySelector(".loading-spinner").style.display = "inline-block";
+      form.querySelector("button span:first-child").textContent = "Sending...";
 
       try {
         const response = await fetch(form.action, {
@@ -611,22 +619,36 @@
         });
 
         const result = await response.json();
-        const formMessage = document.getElementById("form-message");
 
         if (result.success) {
-          formMessage.textContent = "Your message was sent successfully!";
-          formMessage.style.color = "green";
-          form.reset(); // Reset the form fields
+          showToast("Your message was sent successfully!", "success");
+          form.reset();
         } else {
-          formMessage.textContent = result.message;
-          formMessage.style.color = "red";
+          showToast(result.message || "Failed to send your message.", "error");
         }
       } catch (error) {
-        document.getElementById("form-message").textContent =
-          "An error occurred while sending your message. Please try again.";
+        showToast("An error occurred. Please try again.", "error");
         console.error("Error:", error);
+      } finally {
+        // Hide loading spinner
+        form.querySelector(".loading-spinner").style.display = "none";
+        form.querySelector("button span:first-child").textContent = "Send";
       }
     });
+
+    // Show toast message
+    function showToast(message, type) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = `toast toast-${type}`;
+      toast.style.opacity = 1;
+
+      // Automatically hide toast after 4 seconds
+      setTimeout(() => {
+        toast.style.opacity = 0;
+      }, 4000);
+    }
+
   </script>
 </body>
 

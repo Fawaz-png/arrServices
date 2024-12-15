@@ -238,7 +238,7 @@
 
 
 
-/* About Us Section */
+/* General Styles */
 .about-us {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -254,13 +254,8 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     font-size: 1em;
-}
-
-.about-us .cta a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 1em;
-    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    border-radius: 5px;
 }
 
 .about-us .cta:hover {
@@ -268,34 +263,46 @@
     color: #fff;
 }
 
+.about-us .cta a {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Layout Container */
 .section-container {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 40px;
     max-width: 90%;
     margin: 0 auto;
-    flex-wrap: wrap;
+}
+
+.overview-text,
+.carousel-wrapper {
+    flex: 1 1 45%;
+    min-width: 300px;
 }
 
 .carousel-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     max-width: 600px;
-    width: 100%;
     margin: 0 auto;
-    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Carousel */
 .carousel-container {
     position: relative;
     overflow: hidden;
-    flex: 1;
-    width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    width: 500px;
+    margin: 0 auto;
 }
 
 .carousel-slide {
@@ -311,7 +318,6 @@
 }
 
 .carousel-slide.active {
-    transform: translateX(0);
     opacity: 1;
 }
 
@@ -325,11 +331,12 @@
 .carousel-arrow {
     font-size: 2em;
     cursor: pointer;
-    color: var(--text-color);
     background-color: var(--tertiary-color);
-    padding: 10px;
+    color: #fff;
     border: none;
+    padding: 10px;
     border-radius: 5px;
+    z-index: 10;
     transition: background-color 0.3s ease;
 }
 
@@ -347,8 +354,8 @@
 }
 
 .indicator {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     background-color: var(--secondary-color);
     opacity: 0.5;
     border-radius: 50%;
@@ -359,52 +366,59 @@
     opacity: 1;
 }
 
-
-/* Responsive layout for smaller screens */
-@media (max-width: 768px) {
+/* Responsive Design */
+/* Tablets and Large Mobile */
+@media (max-width: 1024px) {
     .section-container {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
-}
 
-/* Tablet Portrait and Landscape */
-@media (max-width: 1024px) {
+    .overview-text,
     .carousel-wrapper {
-        max-width: 100%;
-    }
-
-    .carousel-container {
-        aspect-ratio: 4 / 3;
+        flex: 1 1 100%;
     }
 }
 
-/* Mobile Landscape */
-@media (max-width: 768px) and (orientation: landscape) {
+/* Small Mobile and Portrait */
+/* Larger carousel for single-column layout on smaller screens */
+@media (max-width: 768px) {
     .carousel-container {
+        width: 90%;
+        max-width: 600px;
+        /* Increased max width for larger display */
         aspect-ratio: 4 / 3;
+        /* Slightly wider aspect ratio for better visibility */
     }
-}
 
-/* Mobile Portrait */
-@media (max-width: 480px) and (orientation: portrait) {
     .about-us {
         padding: var(--padding-small);
     }
 
+    .carousel-arrow {
+        padding: 8px;
+        font-size: 1.5em;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
     .carousel-container {
         aspect-ratio: 1 / 1;
     }
 
-    .carousel-arrow {
-        padding: 5px;
+    .cta {
+        padding: 10px 15px;
+        font-size: 0.9em;
     }
 }
 
 
+
+/* General Services Section Improvements */
 #services {
     background: linear-gradient(135deg, var(--background-color), #34495E);
-    /* Darker Charcoal */
     padding: 60px 20px;
     text-align: center;
     overflow: hidden;
@@ -417,9 +431,10 @@
     color: #ccc;
 }
 
+/* Swiper Adjustments for Carousel Responsiveness */
 #services .swiper-container {
     width: 100%;
-    padding: 40px 0;
+    padding: 20px 0;
     position: relative;
 }
 
@@ -430,25 +445,27 @@
     transition: transform 0.3s ease;
 }
 
+/* Service Block Adjustments */
 .service-block {
-    width: 320px;
+    width: 100%;
+    max-width: 350px;
     overflow: hidden;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
 }
 
 .service-block img {
     width: 100%;
-    height: 400px;
+    height: 320px;
     object-fit: cover;
     border-radius: 10px;
 }
 
 .service-block .description {
     background: transparent;
-    padding: 10px;
-    text-align: left;
-    width: fit-content;
+    padding: 15px;
+    text-align: center;
 }
 
 .service-block:hover {
@@ -456,14 +473,13 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Swiper Pagination */
+/* Swiper Pagination & Navigation */
 .swiper-pagination {
     position: absolute;
-    bottom: 20px;
-    /* Adjust as needed */
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    /* Center the pagination */
+    display: none;
 }
 
 .swiper-pagination-bullet {
@@ -478,32 +494,16 @@
     background-color: var(--hover-color);
 }
 
-/* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--secondary-color);
     background-color: transparent;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-top: -30px;
+    padding: 10px;
     z-index: 10;
+    display: none;
 }
 
-/* Hide arrows and indicators initially */
-.swiper-button-next,
-.swiper-button-prev,
-.swiper-pagination {
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* Show arrows and indicators on hover */
-#services:hover .swiper-button-next,
-#services:hover .swiper-button-prev,
-#services:hover .swiper-pagination {
-    opacity: 1;
-}
-
+/* Fade-in Effect for Elements */
 .fade-content {
     opacity: 0;
     transform: translateY(20px);
@@ -515,42 +515,37 @@
     transform: translateY(0);
 }
 
-/* Tablet Portrait and Landscape */
-@media (max-width: 1024px) {
+/* Media Queries for Responsive Design */
+
+/* Tablet and Smaller Screens */
+@media (max-width: 768px) {
     #services .container {
-        padding: 0 10px;
+        padding: 0 15px;
     }
 
     .service-block {
-        width: 90%;
+        max-width: 90%;
     }
 
     .swiper-container {
-        padding: 20px 0;
-    }
-}
-
-/* Mobile Landscape */
-@media (max-width: 768px) and (orientation: landscape) {
-    .service-block {
-        width: 80%;
-    }
-
-    .swiper-container {
-        padding: 10px 0;
+        padding: 15px 0;
     }
 
     .swiper-button-next,
-    .swiper-button-prev,
-    .swiper-pagination {
-        opacity: 1;
+    .swiper-button-prev {
+        display: block;
     }
 }
 
 /* Mobile Portrait */
-@media (max-width: 480px) and (orientation: portrait) {
+@media (max-width: 480px) {
     #services {
         padding: 30px 10px;
+    }
+
+    .service-block img {
+        height: 280px;
+        /* Smaller height for better proportions */
     }
 
     .swiper-container {
@@ -558,7 +553,7 @@
     }
 
     .service-block {
-        width: 100%;
+        max-width: 100%;
     }
 
     .swiper-button-next,
@@ -1081,45 +1076,90 @@
 /* Form Container */
 .form-container {
     width: 45%;
-    /* Adjust width as needed */
+    max-width: 600px;
+    margin: auto;
     background-color: var(--tertiary-color);
     padding: 40px;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Group */
+/* Floating Labels */
 .form-group {
     margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    transition: all 0.2s;
+}
+
+.form-group input:focus+label,
+.form-group textarea:focus+label,
+.form-group input:not(:placeholder-shown)+label,
+.form-group textarea:not(:placeholder-shown)+label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.5em;
+    color: var(--hover-color);
 }
 
 .form-group input,
 .form-group textarea {
-    width: calc(100% - 24px);
-    /* Adjust for padding */
+    width: 100%;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Light border */
     border-radius: 5px;
     background-color: transparent;
-    /* Transparent background */
     color: var(--text-color);
     font-size: 1em;
-    box-sizing: border-box;
-    /* Include padding and border in element's total width and height */
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
-.form-group textarea {
-    resize: vertical;
-    /* Allow vertical resizing for textarea */
-    min-height: 120px;
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--hover-color);
 }
 
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-    /* Lighter placeholder text */
+/* Toast Messages */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 0.9em;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
 }
+
+.toast.toast-success {
+    background-color: #4caf50;
+    /* Success green */
+}
+
+.toast.toast-error {
+    background-color: #f44336;
+    /* Error red */
+}
+
+/* Accessibility */
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--hover-color);
+    outline-offset: 2px;
+}
+
 
 /* Contact Information */
 .contact-info {
