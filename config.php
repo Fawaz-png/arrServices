@@ -1,9 +1,9 @@
 <?php
 // Database configuration
 $host = 'localhost';       // Your database host (usually 'localhost')
-$dbname = 'your_database'; // Replace with your database name
-$username = 'root';        // Your database username
-$password = '';            // Your database password (leave empty for default XAMPP setup)
+$dbname = 'arrserv1_Reviews'; // Replace with your database name
+$username = 'arrserv1_admin';        // Your database username
+$password = '4dfxru4#etUj!koo*7';            // Your database password (leave empty for default XAMPP setup)
 
 try {
     // Create a new PDO connection
