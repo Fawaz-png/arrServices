@@ -35,13 +35,20 @@
     color: var(--text-color);
 }
 
-.row .image-col {
-    align-self: center;
+.about .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--padding-medium);
 }
 
-.about .image-col video {
+.about .image-col img {
     width: 100%;
     height: auto;
+    max-height: 400px;
+    /* Constrain image height */
+    object-fit: cover;
+    /* Ensures the image maintains aspect ratio */
     border-radius: 8px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -50,6 +57,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: var(--padding-small);
     padding: var(--padding-medium);
 }
 
@@ -62,20 +70,23 @@
 .about p {
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: var(--padding-medium);
 }
 
-/* Responsive Adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
     .about .row {
         flex-direction: column;
-        align-items: center;
     }
 
     .about .image-col,
     .about .text-col {
-        max-width: 100%;
         flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .about .image-col img {
+        max-height: 300px;
+        /* Adjust image height for smaller screens */
     }
 
     .about .text-col {
@@ -91,6 +102,7 @@
         font-size: 1rem;
     }
 }
+
 
 /* Mission Section */
 .mission {
@@ -256,6 +268,93 @@
 
 
 
+/* Team Section */
+.team {
+    padding: var(--padding-large) 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+.team h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--padding-medium);
+    color: var(--secondary-color);
+}
+
+.team-intro {
+    font-size: 1.2rem;
+    margin-bottom: var(--padding-large);
+    color: var(--text-muted);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--padding-medium);
+    justify-content: center;
+}
+
+.team-card {
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.image-wrapper {
+    overflow: hidden;
+    max-height: 320px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover .image-wrapper img {
+    transform: scale(1.05);
+}
+
+.team-info {
+    padding: var(--padding-medium);
+}
+
+.team-info h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.team-info .role {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-intro {
+        font-size: 1rem;
+    }
+
+    .team-card {
+        margin-bottom: var(--padding-medium);
+    }
+}
+
+
 
 /* Behind-the-Scenes Section */
 .behind-scenes {
@@ -286,7 +385,7 @@
     justify-content: center;
 }
 
-.behind-scenes .row:nth-of-type(2){
+.behind-scenes .row:nth-of-type(2) {
     flex-direction: row-reverse;
 }
 
